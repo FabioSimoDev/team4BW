@@ -1,1 +1,59 @@
 /* STILI CSS DELLA PAGINA */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../assets/bg.jpg);
+  background-size: cover;
+}
+
+#container {
+  margin: 4em;
+}
+
+main {
+  margin-left: 20em;
+  margin-right: 20em;
+  margin-top: 5em;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+  color: white;
+}
+
+span {
+  font-weight: bold;
+}
+
+img {
+  width: 200px;
+}
+
+#buttons {
+  margin-top: 3em;
+}
+
+.button1,
+.button2,
+.button3,
+.button4 {
+  margin: 1em;
+  display: inline;
+}
+
+button {
+  border-radius: 50px;
+  border-image: linear-gradient(
+      337.17deg rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    )
+    1;
+  border-color: white;
+  color: white;
+  margin: 1em;
+  width: 300px;
+  height: 60px;
+  background-color: transparent;
+}
