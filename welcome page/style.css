@@ -1,1 +1,89 @@
 /* STILI CSS DELLA PAGINA */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,300&display=swap');
+
+
+body {
+font-family: 'Montserrat', sans-serif; 
+background-image: url(../assets/bg.jpg);
+ background-repeat: no-repeat;
+ background-size: 100%;
+
+}
+#img img {
+    width: 180px;
+    
+
+}
+main {
+    margin: 4em;
+}
+h2  {
+    color: white;
+    margin-top: 50px;
+     margin-bottom: 30px;
+     font-size: 60px;
+     width: 400;
+}
+span  {
+    font-weight: 800;
+}
+
+#col {
+color: #D20094;
+font-size: 36px;
+margin-bottom: 18px;
+font-weight: 700;
+}
+
+#paragraph {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+     font-size: 17px;
+
+}
+
+#list {
+    color:  white;
+font-family: Arial, Helvetica, sans-serif;
+margin-top: 30px;
+ line-height: 2;
+}
+
+footer  {
+    color: white;
+margin-left: 4em;
+}
+
+button {
+    color:rgb(16, 16, 16);
+    background-color: #00FFFF;
+    position: relative;
+    left: 70%;
+     font-size: 25px;
+padding: 15px 50px ;
+box-shadow: 0px 0px 30px #00FFFF;
+border: none;
+font-weight: 600;
+
+
+}
+#submitcontainer{
+    position: relative;
+    margin-top: 3em;
+}
+#checkbox{
+    position:absolute;
+    top: 50%;
+    left: 21%;
+    transform: translate(-50%,-50%);
+}
+ol {
+    list-style-type: disc;
+    margin-left: 2em;
+}
+#conteiner {
+    width: 90%;
+    margin: auto;
+    
+
+}

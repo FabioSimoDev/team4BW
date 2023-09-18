@@ -10,64 +10,65 @@
   <body>
     <!-- qui andrà la struttura della pagina -->
     <!--cominciamo a inserire il logo, scrivere i vari titoli e la descrizione-->
-    <main>
-      <div id="img">
-        <img src="../assets/epicode_logo.png" />
-      </div>
-      <div id="container">
-        <h1>EPICODE</h1>
-      </div>
-      <div id="welcome">
-        <h2>Welcome to your exam</h2>
-      </div>
-      <div id="col">
-        <h3>Instruction</h3>
-      </div>
-      <div id="paragraph">
-        <p>
-          We don't expect most engineers to know the answers to all of these
-          questions, so don't worry if you're unsure of a few of them.
-        </p>
-      </div>
-      <!--Andiamo a creare una lista ordinata-->
-      <div id="list">
-        <ol>
-          <li>Each question is timed and can only be answered once.</li>
-          <li>
-            Changing browser tab or opening other windows will invalidate the
-            question.
-          </li>
-          <li>This exam will take approx. 0-5 minutes.</li>
-        </ol>
-      </div>
-    </main>
-    <!--Nell'ultima parte del footer applichiamo una checkbox e un button-->
-    <footer>
-      <div id="checkbox">
-        <input type="checkbox" id="newbut" />
-        <label for="newbut"
-          >I promise to answer myself without help from anyone</label
-        >
-      </div>
-      <div id="class">
-        <h3>Level of difficult</h3>
-      </div>
-      <div>
-        <input type="checkbox" id="easy-checkbox" />
-        <label for="easy-checkbox">Easy</label>
-      </div>
-      <div>
-        <input type="checkbox" id="medium-checkbox" />
-        <label for="meidum-checkbox">Meidum</label>
-      </div>
-      <div>
-        <input type="checkbox" id="hard-checkbox" />
-        <label for="hard-checkbox">Hard</label>
-      </div>
-      <div>
-        <button type="submit">PROCEED</button>
-      </div>
-    </footer>
-    <script src="script.js"></script>
+    <div id="conteiner">
+      <main>
+        <div id="img">
+          <img src="../assets/epicode_logo.png" />
+        </div>
+        <div id="welcome">
+          <h2>Welcome to<br /><span> your exam</span></h2>
+        </div>
+        <div id="col">
+          <h3>Instruction</h3>
+        </div>
+        <div id="paragraph">
+          <p>
+            We don't expect most engineers to know the answers to all of these<br>
+            questions, so don't worry if you're unsure of a few of them.
+          </p>
+        </div>
+        <!--Andiamo a creare una lista ordinata-->
+        <div id="list">
+          <ol>
+            <li>Each question is timed and can only be answered once.</li>
+            <li>
+              Changing browser tab or opening other windows will invalidate the
+              question.
+            </li>
+            <li>This exam will take approx. 0-5 minutes.</li>
+          </ol>
+        </div>
+      </main>
+      <!--Nell'ultima parte del footer applichiamo una checkbox e un button-->
+      <footer>
+        <div id="class">
+          <h3>Level of difficult</h3>
+        </div>
+        <div>
+          <input type="checkbox" id="easy-checkbox" />
+          <label for="easy-checkbox">Easy</label>
+        </div>
+        <div>
+          <input type="checkbox" id="medium-checkbox" />
+          <label for="meidum-checkbox">Meidum</label>
+        </div>
+        <div>
+          <input type="checkbox" id="hard-checkbox" />
+          <label for="hard-checkbox">Hard</label>
+        </div>
+        <div id="submitcontainer">
+          <div id="checkbox">
+            <input type="checkbox" id="newbut" />
+            <label for="newbut" id="newbut"
+              >I promise to answer myself without help from anyone</label
+            >
+          </div>
+          <div>
+            <button type="submit">PROCEED</button>
+          </div>
+        </div>
+      </footer>
+      <script src="script.js"></script>
+    </div>
   </body>
 </html>
