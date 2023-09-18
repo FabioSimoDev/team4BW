@@ -8,32 +8,37 @@
     <title>clone benchmark EPICODE</title>
   </head>
   <body>
-    <nav>
-      <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
-    </nav>
-    <main>
-      <h1>Result</h1>
-      <p>
-        <!-- gli span vanno completati in javascript in base ai risultati del benchmark. -->
-        <!-- i <br> servono ad inserire rotture di riga (andare a capo). -->
-        Correct<br /><span id="correctAnswersPercentage"></span><br /><span
-          id="correctAnswersCount"
-        ></span>
-        questions
-      </p>
-      <!-- questo div con ID "chartContainer" conterrá il grafico, probabilmente da inserire in javascript. -->
-      <div id="chartContainer"></div>
-      <p>
-        Wrong<span id="wrongAnswersPercentage"></span><br /><span
-          id="wrongAnswersCount"
-        ></span>
-        questions
-      </p>
-      <!-- collegamento alla pagina feedback -->
-      <a class="link" href="../feedback page/index.html"
-        ><button type="button" id="rate-us-btn">Rate Us</button></a
-      >
-    </main>
+    <div class="container">
+      <div class="block">
+        <nav>
+          <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
+        </nav>
+        <main>
+          <h1>Results</h1>
+          <h5>The summary of your answers:</h5>
+          <p>
+            <!-- gli span vanno completati in javascript in base ai risultati del benchmark. -->
+            <!-- i <br> servono ad inserire rotture di riga (andare a capo). -->
+            Correct <br><span class="percentage" id="correctAnswersPercentage">50%</span><br /><span class="question"
+              id="correctAnswersCount"
+            >5/6</span>
+          <span class="question">questions<span>
+          </p>
+          <!-- questo div con ID "chartContainer" conterrá il grafico, probabilmente da inserire in javascript. -->
+          <div id="chartContainer"></div>
+          <p>
+            Wrong <br><span class="percentage" id="wrongAnswersPercentage">60%</span><br /><span class="question"
+              id="wrongAnswersCount"
+            >55</span>
+            <span class="question">questions</span>
+          </p>
+          <!-- collegamento alla pagina feedback -->
+          <a class="link" href="../feedback page/index.html"
+            ><button type="button" id="rate-us-btn">RATE US</button></a
+          >
+        </main>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
