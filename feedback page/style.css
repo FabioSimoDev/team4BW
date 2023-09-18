@@ -1,1 +1,88 @@
 /* STILI CSS DELLA PAGINA */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Montserrat:wght@400;700&family=Outfit:wght@400;700&display=swap');
+
+body {
+    background-image: url(../assets/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+
+
+h1 {
+    font-weight: bold;
+    font-size: 3em;
+    color: white;
+    text-align-last: center;
+    margin: 10px;
+    margin-top: 200px;
+}
+
+h3{font-size: 2em;
+    color: white;
+    text-align-last: center;
+    margin: 10px;
+    margin-top: 30px;
+
+}
+
+.container{
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#star{
+    margin: 60px;
+    margin-bottom: 150px;
+    font-size: 3em;
+}
+
+.fafa-star{
+    font-size: 2em;
+}
+
+h3{
+    margin-top: 30px;
+    line-height: 50px;
+}
+
+.start{
+    text-align: initial;
+}
+
+input{
+    background: none;
+    font-size: 1,5em;
+    margin-top: 50px;
+    border: none;
+}
+
+hr{
+    border: 1px solid #c2128d;
+    
+}
+
+button{
+    margin-top: 50px;
+    padding: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    font-size: 1.5em;
+    background-color: #00ffff;
+    color: #0b113b;
+    font-weight: 800;
+    box-shadow: 0px 0px 30px #00ffff;
+    border: none;
+
+   
+}
+
+i{
+    color: #00ffff;
+    
+    
+}
