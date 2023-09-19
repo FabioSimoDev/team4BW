@@ -1,15 +1,24 @@
 // codice JavaScript della pagina
 
-var countdownNumberEl = document.querySelector('.timer-text');
-var countdown = 50;
+let countdownNumberEl = document.querySelector('.timer-text');
+let countdown = 50;
 
 countdownNumberEl.textContent = countdown;
 
-setInterval(function () {
+
+const timerCountdown = setInterval(function () {
     countdown = --countdown <= 0 ? 50 : countdown;
 
     countdownNumberEl.textContent = countdown;
 }, 1000);
+const timer = function () {
+    const tmc = setInterval(function () {
+        countdown = --countdown <= 0 ? 50 : countdown;
+
+        countdownNumberEl.textContent = countdown;
+    }, 1000);
+}
+
 
 const questionsEasy = [
     {
@@ -321,66 +330,68 @@ const questionsHard = [
     },
 ];
 
-let currentQuestion = 0
-let score = 0
+let currentQuestion = 0;
+let score = 0;
 
-const questionContainer = document.querySelector('.question')
-const answer = document.querySelectorAll('#buttons button')
+const questionContainer = document.querySelector(".question");
+const answer = document.querySelectorAll("#buttons button");
 
 const startQuiz = function () {
     currentQuestion = 0;
     displayQuestion();
-}
+};
 
 const displayQuestion = function () {
-    const currentQue = questionsEasy[currentQuestion]
-    questionContainer.innerHTML = currentQue.question
+    answer.forEach((element) => {
+        element.style.display = 'inline'
+    })
+    questionContainer.style.color = 'white';
+    questionContainer.style.fontSize = '40px'
+    const currentQue = questionsEasy[currentQuestion];
+    questionContainer.innerHTML = currentQue.question;
 
-    // const allOptions = [...currentQue.incorrect_answers, ...currentQue.correct_answer]
-    const allOptions = [{
-        correct: '',
-        incorrect: '',
-        answer: []
-    }]
-    allOptions.push(currentQue.incorrect_answers)
-    allOptions.correct = currentQue.correct_answer
-    allOptions.incorrect = currentQue.incorrect_answers
-    allOptions.answer.push(currentQue.correct_answer)
-    allOptions.answer.push(currentQue.incorrect_answers)
-    const shuffle = shuffleArray(allOptions) //mischia le opzioni
-    console.log(allOptions)
+    const allOptions = currentQue.incorrect_answers.slice(); // Cloniamo l'array delle risposte errate
+    allOptions.push(currentQue.correct_answer); // Aggiungiamo la risposta corretta
 
-    for (let i = 0; i < answer.lenght; i++) {
+    const shuffle = shuffleArray(allOptions); // Mischiamo le opzioni
+    console.log(shuffle);
+
+    for (let i = 0; i < answer.length; i++) {
+        if (i >= allOptions.length) {
+            answer[i].style.display = 'none'
+        }
         answer[i].textContent = shuffle[i];
-        answer[i].addEventListener('click', answerClick);
+        answer[i].addEventListener("click", answerClick);
     }
+};
 
-}
 const answerClick = function (event) {
-    const selectAnswer = event.target.textContent
-    const correctAnswer = questionsEasy[currentQuestion].correct_answer
-    if (selectAnswer === correctAnswer) {
-        return score = 1;
+    const selectedAnswer = event.target.textContent;
+    const correctAnswer = questionsEasy[currentQuestion].correct_answer;
+
+    if (selectedAnswer === correctAnswer) {
+        score += 1;
     }
 
     currentQuestion++;
 
     if (currentQuestion < questionsEasy.length) {
         displayQuestion();
+        clearInterval(timerCountdown)
+        console.log(timerCountdown)
+        timer();
     } else {
-        alert('Hai completato il quiz!');
+        alert("Hai completato il quiz! Punteggio: " + score);
     }
-}
-const shuffleArray = function (array) {
-    console.log(array)
-    for (let i = array.lenght - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        [array[i], array[j] = [array[j], array[i]]]
-    }
-    console.log(array)
-    return array
+};
 
-}
+const shuffleArray = function (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Scambia gli elementi casualmente
+    }
+    return array;
+};
 startQuiz()
 
 
