@@ -19,7 +19,7 @@ h1 {
   color: white;
   text-align-last: center;
   margin: 10px;
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 h3 {
@@ -58,9 +58,13 @@ h3 {
 
 input {
   background: none;
-  font-size: 1, 5em;
+  font-size: 1.4em;
   margin-top: 50px;
   border: none;
+  color: white;
+  margin-left: 1em;
+  outline: none;
+  font-family: "Outfit", sans-serif;
 }
 
 hr {
@@ -81,12 +85,10 @@ button {
 }
 
 .blue {
-  /* color: #00ffff; */
-
+  margin: 0 5px;
   color: #081050;
 }
 .white {
   color: #00ffff;
-
-  /* color: #081050; */
+  margin: 0 5px;
 }
