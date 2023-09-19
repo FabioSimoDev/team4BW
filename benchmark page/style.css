@@ -157,20 +157,20 @@ button:hover::before {
   transition: all 0.3s ease;
 }
 
-@media (max-width: 1600px) {
+@media (min-width: 1600px) and (max-width: 1710px) {
   main {
     margin: 10em;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1000px) and (max-width: 1600px) {
   main {
     margin: 5em;
   }
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1710px) {
   main {
-    margin: 0 20em;
+    margin: 5em 20em;
   }
 }
