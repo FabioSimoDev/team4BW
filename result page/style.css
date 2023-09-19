@@ -2,21 +2,25 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,800;1,6..12,400;1,6..12,500;1,6..12,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit:wght@600;700&display=swap");
 
 body {
   background-color: black;
+  background-image: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .container {
-  width: 50%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
-  background-image: url(../assets/bg.jpg);
+
   /* font-family: "Nunito Sans", sans-serif; */
   font-family: "Montserrat", sans-serif;
   color: #e7e7eb;
   margin-top: 5em;
-  background-repeat: no-repeat;
-  background-size: 100%;
+
+  position: relative;
 }
 .block {
   padding: 2em 5em;
@@ -47,8 +51,10 @@ p {
   display: inline-block;
 }
 .question {
-  font-size: 0.5em;
+  font-size: 25px;
   font-weight: 300;
+  vertical-align: top;
+  margin-top: 10px;
 }
 button {
   font-size: 1.7em;
@@ -68,4 +74,109 @@ a {
 }
 .percentage {
   font-weight: 700;
+}
+
+/* Stile per il contenitore principale */
+.columns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Stile per le colonne sinistra e destra */
+.left-column,
+.right-column {
+  text-align: center;
+  flex: 1;
+}
+
+/* Stile per il centro della colonna */
+.center-column {
+  flex: 2;
+  text-align: center;
+}
+
+/* Stile per il testo principale */
+p {
+  font-size: 16px;
+  margin: 0;
+  word-wrap: keep-all;
+}
+
+/* Stile per le percentuali */
+.percentage {
+  font-size: 65px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#correctAnswersPercentage {
+  color: #28a745;
+}
+
+#wrongAnswersPercentage {
+  color: #bf0086;
+  text-shadow: 0px 0px 10px black;
+}
+
+.columns-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column,
+.right-column {
+  width: 20%;
+}
+
+.left-column {
+  text-align: left;
+}
+
+.right-column {
+  text-align: right;
+}
+
+.left-column p,
+.right-column p {
+  font-size: 60px;
+  /* font-weight: bold; */
+}
+
+.center-column {
+  width: 60%;
+  text-align: center;
+}
+
+#donut-chart {
+  width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#custom-legend {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#custom-legend p {
+  font-size: 15px;
+  line-height: 1.4em;
+}
+
+.legend-color {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+#congratulations-text {
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+#congratulations-text,
+.legend-color {
+  font-size: 20px;
 }
