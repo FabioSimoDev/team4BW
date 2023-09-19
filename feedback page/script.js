@@ -33,21 +33,26 @@ for (i = 0; i < 10; i++) {
   });
 
   stars.addEventListener("mouseover", (e) => {
+    //aggiungo il colore sull over del mouse
     let length = array.indexOf(e.target);
 
     if (e.target.classList.contains("blue")) {
+      //se la stella e blu diventano bianche tutte le precendenti
       for (j = 0; j <= length; j++) {
         array[j].classList.add("white0");
         array[j].classList.remove("blue0");
       }
     } else {
       for (j = length + 1; j < 10; j++) {
+        //se la stella e bianca colora di blu tutte le successive
         array[j].classList.add("blue0");
         array[j].classList.remove("white0");
       }
     }
   });
   stars.addEventListener("mouseleave", () => {
+    // appena tolgo il mouse rimuovo tutto quello che ho aggiunto con l'over e lascio
+    //solo quello che ho cliccato
     for (j = 0; j < 10; j++) {
       array[j].classList.remove("white0");
       array[j].classList.remove("blue0");
