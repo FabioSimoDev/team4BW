@@ -15,8 +15,10 @@
           <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
         </nav>
         <main>
-          <h1>Results</h1>
-          <h5>The summary of your answers:</h5>
+          <div class="title">
+            <h1>Results</h1>
+            <h5>The summary of your answers:</h5>
+          </div>
           <div class="columns-container">
             <div class="left-column">
               <p>
@@ -26,7 +28,8 @@
                   class="percentage"
                   id="correctAnswersPercentage"
                   >50%</span
-                ><br /><span class="question" id="correctAnswersCount">5/6 </span
+                ><br /><span class="question" id="correctAnswersCount"
+                  >5/6 </span
                 ><span class="question">questions</span>
               </p>
             </div>
@@ -35,9 +38,10 @@
               <div id="chart-container">
                 <canvas id="donut-chart"></canvas>
                 <div id="custom-legend">
-                  <div>
+                  <div class="text-inside-graph">
                     <p>
-                      <span id="congratulations-text">Congratulations!</span></span><br /><span class="legend-color"
+                      <span id="congratulations-text">Congratulations!</span
+                      ><br /><span class="legend-color"
                         >You passed the exam.</span
                       ><br /><br />we'll send you a certificate in a few
                       minutes.<br />check your email (including promotions /
