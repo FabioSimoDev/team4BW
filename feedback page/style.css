@@ -80,8 +80,13 @@ button {
   border: none;
 }
 
-i {
+.blue {
   /* color: #00ffff; */
 
   color: #081050;
+}
+.white {
+  color: #00ffff;
+
+  /* color: #081050; */
 }
