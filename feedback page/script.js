@@ -47,7 +47,7 @@ for (i = 0; i < 10; i++) {
       }
     }
   });
-  stars.addEventListener("mouseout", () => {
+  stars.addEventListener("mouseleave", () => {
     for (j = 0; j < 10; j++) {
       array[j].classList.remove("white0");
       array[j].classList.remove("blue0");
