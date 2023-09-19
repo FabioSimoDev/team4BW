@@ -85,10 +85,22 @@ button {
 }
 
 .blue {
-  margin: 0 5px;
+  padding: 0 5px;
   color: #081050;
+  transition: all 0.3s ease;
 }
 .white {
   color: #00ffff;
-  margin: 0 5px;
+  padding: 0 5px;
+  transition: all 0.3s ease;
+}
+.blue0 {
+  padding: 0 5px;
+  color: #081050;
+  transition: all 0.3s ease;
+}
+.white0 {
+  color: #00ffff;
+  padding: 0 5px;
+  transition: all 0.3s ease;
 }

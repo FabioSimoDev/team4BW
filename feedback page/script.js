@@ -8,6 +8,7 @@ for (i = 0; i < 10; i++) {
   stars.classList.add("fas");
   stars.classList.add("fa-star");
   stars.classList.add("blue");
+  stars.classList.add(`${i + 1}`);
 
   array.push(stars);
   starDiv.appendChild(array[i]);
@@ -28,6 +29,28 @@ for (i = 0; i < 10; i++) {
         array[j].classList.add("blue");
         array[j].classList.remove("white");
       }
+    }
+  });
+
+  stars.addEventListener("mouseover", (e) => {
+    let length = array.indexOf(e.target);
+
+    if (e.target.classList.contains("blue")) {
+      for (j = 0; j <= length; j++) {
+        array[j].classList.add("white0");
+        array[j].classList.remove("blue0");
+      }
+    } else {
+      for (j = length + 1; j < 10; j++) {
+        array[j].classList.add("blue0");
+        array[j].classList.remove("white0");
+      }
+    }
+  });
+  stars.addEventListener("mouseout", () => {
+    for (j = 0; j < 10; j++) {
+      array[j].classList.remove("white0");
+      array[j].classList.remove("blue0");
     }
   });
 }
