@@ -1,24 +1,23 @@
 // codice JavaScript della pagina
 
-let countdownNumberEl = document.querySelector('.timer-text');
+let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
+let timerCountdown;
 
-countdownNumberEl.textContent = countdown;
-
-
-const timerCountdown = setInterval(function () {
-    countdown = --countdown <= 0 ? 50 : countdown;
-
-    countdownNumberEl.textContent = countdown;
-}, 1000);
 const timer = function () {
-    const tmc = setInterval(function () {
+    countdown = 50;
+    countdownNumberEl.textContent = countdown;
+    timerCountdown = setInterval(function () {
         countdown = --countdown <= 0 ? 50 : countdown;
 
         countdownNumberEl.textContent = countdown;
     }, 1000);
-}
+};
 
+const stopTimer = function () {
+    clearInterval(timerCountdown);
+    timerCountdown = null;
+};
 
 const questionsEasy = [
     {
@@ -366,6 +365,7 @@ const displayQuestion = function () {
 };
 
 const answerClick = function (event) {
+    const circle = document.querySelector('svg circle')
     const selectedAnswer = event.target.textContent;
     const correctAnswer = questionsEasy[currentQuestion].correct_answer;
 
@@ -377,8 +377,11 @@ const answerClick = function (event) {
 
     if (currentQuestion < questionsEasy.length) {
         displayQuestion();
-        clearInterval(timerCountdown)
-        console.log(timerCountdown)
+        circle.style.animation = 'none'
+        circle.offsetWidth;
+        circle.style.animation = 'countdown 50s linear infinite forwards'
+        stopTimer();
+        console.log(timerCountdown);
         timer();
     } else {
         alert("Hai completato il quiz! Punteggio: " + score);
@@ -393,7 +396,7 @@ const shuffleArray = function (array) {
     return array;
 };
 startQuiz()
-
+timer()
 
 
 

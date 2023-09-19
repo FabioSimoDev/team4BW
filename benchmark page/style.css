@@ -85,7 +85,7 @@ button {
   font-size: 24px;
   color: #fff;
 }
-svg circle {
+svg .animation {
   stroke-dasharray: 286px;
   stroke-dashoffset: 0px;
   animation: countdown 50s linear infinite forwards;
