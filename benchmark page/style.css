@@ -139,9 +139,8 @@ button::before {
   padding: 5px;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 16%,
-    rgba(0, 0, 0, 0.4) 100%
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -156,4 +155,22 @@ button:hover::before {
     rgba(181, 18, 137, 1) 100%
   );
   transition: all 0.3s ease;
+}
+
+@media (max-width: 1600px) {
+  main {
+    margin: 10em;
+  }
+}
+
+@media (min-width: 1000px) {
+  main {
+    margin: 5em;
+  }
+}
+
+@media (min-width: 1700px) {
+  main {
+    margin: 0 20em;
+  }
 }
