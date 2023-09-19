@@ -1,4 +1,16 @@
 // codice JavaScript della pagina
+
+var countdownNumberEl = document.querySelector('.timer-text');
+var countdown = 50;
+
+countdownNumberEl.textContent = countdown;
+
+setInterval(function () {
+    countdown = --countdown <= 0 ? 50 : countdown;
+
+    countdownNumberEl.textContent = countdown;
+}, 1000);
+
 const questionsEasy = [
     {
         category: "Science: Computers",
@@ -308,4 +320,69 @@ const questionsHard = [
             "do...while loop"],
     },
 ];
+
+let currentQuestion = 0
+let score = 0
+
+const questionContainer = document.querySelector('.question')
+const answer = document.querySelectorAll('#buttons button')
+
+const startQuiz = function () {
+    currentQuestion = 0;
+    displayQuestion();
+}
+
+const displayQuestion = function () {
+    const currentQue = questionsEasy[currentQuestion]
+    questionContainer.innerHTML = currentQue.question
+
+    // const allOptions = [...currentQue.incorrect_answers, ...currentQue.correct_answer]
+    const allOptions = [{
+        correct: '',
+        incorrect: '',
+        answer: []
+    }]
+    allOptions.push(currentQue.incorrect_answers)
+    allOptions.correct = currentQue.correct_answer
+    allOptions.incorrect = currentQue.incorrect_answers
+    allOptions.answer.push(currentQue.correct_answer)
+    allOptions.answer.push(currentQue.incorrect_answers)
+    const shuffle = shuffleArray(allOptions) //mischia le opzioni
+    console.log(allOptions)
+
+    for (let i = 0; i < answer.lenght; i++) {
+        answer[i].textContent = shuffle[i];
+        answer[i].addEventListener('click', answerClick);
+    }
+
+}
+const answerClick = function (event) {
+    const selectAnswer = event.target.textContent
+    const correctAnswer = questionsEasy[currentQuestion].correct_answer
+    if (selectAnswer === correctAnswer) {
+        return score = 1;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questionsEasy.length) {
+        displayQuestion();
+    } else {
+        alert('Hai completato il quiz!');
+    }
+}
+const shuffleArray = function (array) {
+    console.log(array)
+    for (let i = array.lenght - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        [array[i], array[j] = [array[j], array[i]]]
+    }
+    console.log(array)
+    return array
+
+}
+startQuiz()
+
+
+
 

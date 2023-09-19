@@ -11,6 +11,10 @@ body {
   margin: 4em;
 }
 
+#image {
+  display: inline-block;
+}
+
 main {
   margin-left: 20em;
   margin-right: 20em;
@@ -56,4 +60,41 @@ button {
   width: 300px;
   height: 60px;
   background-color: transparent;
+}
+
+.countdown-timer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: 20em;
+  text-align: top;
+}
+
+.countdown-timer svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.countdown-timer .timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+}
+svg circle {
+  stroke-dasharray: 286px;
+  stroke-dashoffset: 0px;
+  animation: countdown 50s linear infinite forwards;
+}
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 286px;
+  }
 }
