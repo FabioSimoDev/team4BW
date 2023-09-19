@@ -1,8 +1,9 @@
 /* STILI CSS DELLA PAGINA */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit:wght@600;700&display=swap");
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Outfit", sans-serif;
   background-image: url(../assets/bg.jpg);
   background-size: cover;
 }
@@ -20,6 +21,7 @@ main {
   margin-right: 20em;
   margin-top: 5em;
   text-align: center;
+  position: relative;
 }
 
 h1 {
@@ -52,18 +54,15 @@ img {
 }
 
 button {
-  border-radius: 50px;
-  border-image: linear-gradient(
-      337.17deg rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    )
-    1;
-  border-color: white;
   color: white;
   margin: 1em;
   width: 300px;
+  border-radius: 100px;
+  border: 1px solid transparent;
   height: 60px;
   background-color: transparent;
+  font-family: "Outfit", sans-serif;
+  font-size: large;
 }
 
 .countdown-timer {
@@ -101,4 +100,60 @@ svg .animation {
   to {
     stroke-dashoffset: 286px;
   }
+}
+
+footer {
+  height: 15vh;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.page-number {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#page-number-span {
+  color: #b51289;
+  font-family: "Inter", sans-serif;
+}
+
+button:hover {
+  transition: all 0.3s ease;
+  background-color: #b51289;
+}
+
+button {
+  position: relative;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  padding: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 16%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+button:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 2%,
+    rgba(181, 18, 137, 1) 100%
+  );
+  transition: all 0.3s ease;
 }

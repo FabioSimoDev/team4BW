@@ -325,6 +325,7 @@ const questionsHard = [
 let currentQuestion = 0;
 let score = 0;
 
+const pageNumber = document.querySelector(".page-number");
 const questionContainer = document.querySelector(".question");
 const answer = document.querySelectorAll("#buttons button");
 
@@ -334,11 +335,15 @@ const startQuiz = function () {
 };
 
 const displayQuestion = function () {
+  pageNumber.innerHTML = `QUESTION ${
+    currentQuestion + 1
+  }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
   answer.forEach((element) => {
     element.style.display = "inline";
   });
   questionContainer.style.color = "white";
   questionContainer.style.fontSize = "40px";
+  questionContainer.style.fontWeight = "300";
   const currentQue = questionsEasy[currentQuestion];
   questionContainer.innerHTML = currentQue.question;
 
@@ -371,7 +376,8 @@ const answerClick = function (event) {
   if (currentQuestion < questionsEasy.length) {
     displayQuestion();
     circle.classList.remove("animation");
-
+    countdown = 50;
+    countdownNumberEl.textContent = countdown;
     setTimeout(() => {
       circle.classList.add("animation");
     }, 10);
