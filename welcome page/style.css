@@ -1,94 +1,169 @@
 /* STILI CSS DELLA PAGINA */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,300&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,300&display=swap");
 
 body {
-font-family: 'Montserrat', sans-serif; 
-background-image: url(../assets/bg.jpg);
- background-repeat: no-repeat;
- background-size: 100%;
-
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 #img img {
-    width: 180px;
-    
-
+  width: 180px;
 }
 main {
-    margin: 4em;
+  margin: 4em;
 }
-h2  {
-    color: white;
-    margin-top: 50px;
-     margin-bottom: 30px;
-     font-size: 60px;
-     width: 400;
+h2 {
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 60px;
+  width: 400;
 }
-span  {
-    font-weight: 800;
+span {
+  font-weight: 800;
 }
 
 #col {
-color: #D20094;
-font-size: 36px;
-margin-bottom: 18px;
-font-weight: 700;
+  color: #d20094;
+  font-size: 36px;
+  margin-bottom: 18px;
+  font-weight: 700;
 }
 
 #paragraph {
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-     font-size: 17px;
-
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
 }
 
 #list {
-    color:  white;
-font-family: Arial, Helvetica, sans-serif;
-margin-top: 30px;
- line-height: 2;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 30px;
+  line-height: 2;
 }
 
-footer  {
-    color: white;
-margin-left: 4em;
+footer {
+  color: white;
+  margin-left: 4em;
 }
 
 button {
-    color:rgb(16, 16, 16);
-    background-color: #00FFFF;
-    position: relative;
-    left: 70%;
-     font-size: 25px;
-padding: 15px 50px ;
-box-shadow: 0px 0px 30px #00FFFF;
-border: none;
-font-weight: 600;
-
-
+  color: rgb(16, 16, 16);
+  background-color: #00ffff;
+  position: relative;
+  left: 70%;
+  font-size: 25px;
+  padding: 15px 50px;
+  box-shadow: 0px 0px 30px #00ffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-#submitcontainer{
-    position: relative;
-    margin-top: 3em;
+button:hover {
+  transform: scale(1.02);
 }
-#checkbox{
-    position:absolute;
-    top: 50%;
-    left: 21%;
-    transform: translate(-50%,-50%);
+#submitcontainer {
+  position: relative;
+  margin-top: 3em;
+}
+#checkbox {
+  position: absolute;
+  top: 50%;
+  left: 21%;
+  transform: translate(-50%, -50%);
 }
 ol {
-    list-style-type: disc;
-    margin-left: 2em;
+  list-style-type: disc;
+  margin-left: 2em;
 }
 #conteiner {
-    width: 90%;
-    margin: auto;
-    
-
+  width: 90%;
+  margin: auto;
 }
-input[type=checkbox] {
-    background: none;
-    
+input[type="checkbox"] {
+  background: none;
 }
 
+h3 {
+  margin-bottom: 1em;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* nascondi checkbox di default */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  transition: all 0.3s ease;
+}
+
+/* crea una checkbox custom */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: transparent;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+/* quando il mouse passa sopra, cambia il colore di background */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* quando la checkbox viene checkata cambia di nuovo la trasparenza */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+/* crea il checkmark */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* mostra il checkmark quando cliccata la checkbox */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* stilizza il checkmark */
+.checkbox-container .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  color: rgb(16, 16, 16);
+}
