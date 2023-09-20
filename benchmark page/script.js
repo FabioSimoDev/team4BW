@@ -1,5 +1,5 @@
 // codice JavaScript della pagina
-
+//Funzione per il timer 
 let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
 let timerCountdown;
@@ -13,12 +13,13 @@ const timer = function () {
     countdownNumberEl.textContent = countdown;
   }, 1000);
 };
-
+//Funzione per far refreshare il timer al click del mouse sulla risposta per poi ripartire alla nuova domanda
 const stopTimer = function () {
   clearInterval(timerCountdown);
   timerCountdown = null;
 };
-
+//Variabili delle domanda in base a tre livelli di difficoltà:
+//Domande facili
 const questionsEasy = [
   {
     category: "Science: Computers",
@@ -115,6 +116,7 @@ const questionsEasy = [
   }
 ];
 
+//Domande medie
 const questionsMedium = [
   {
     category: "Science: Computers",
@@ -220,6 +222,7 @@ const questionsMedium = [
   }
 ];
 
+//Domande difficili
 const questionsHard = [
   {
     category: "Science: Computers",
@@ -324,20 +327,21 @@ const questionsHard = [
 
 let currentQuestion = 0;
 let score = 0;
-
+//Qui cerco la posizione dei vari elementi dell'HTML
 const pageNumber = document.querySelector(".page-number");
 const questionContainer = document.querySelector(".question");
 const answer = document.querySelectorAll("#buttons button");
 
+//Funzione che da il via al quiz 
 const startQuiz = function () {
   currentQuestion = 0;
   displayQuestion();
 };
 
+//Questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
-  pageNumber.innerHTML = `QUESTION ${
-    currentQuestion + 1
-  }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+  pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
+    }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
   answer.forEach((element) => {
     element.style.display = "inline";
   });
@@ -347,6 +351,7 @@ const displayQuestion = function () {
   const currentQue = questionsEasy[currentQuestion];
   questionContainer.innerHTML = currentQue.question;
 
+  //Creiamo un array che contenga tutte le possibili risposte
   const allOptions = currentQue.incorrect_answers.slice(); // Cloniamo l'array delle risposte errate
   allOptions.push(currentQue.correct_answer); // Aggiungiamo la risposta corretta
 
@@ -358,26 +363,30 @@ const displayQuestion = function () {
       answer[i].style.display = "none";
     }
     answer[i].textContent = shuffle[i];
-    answer[i].addEventListener("click", answerClick);
+    answer[i].addEventListener("click", answerClick); //Abbia o collegato il click del mouse alla funzione
   }
 };
 
+//Ci permette di passare alla domana successiva al click del mouse
 const answerClick = function (event) {
   const circle = document.querySelector("svg circle");
   const selectedAnswer = event.target.textContent;
   const correctAnswer = questionsEasy[currentQuestion].correct_answer;
 
+  //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
   if (selectedAnswer === correctAnswer) {
     score += 1;
   }
 
   currentQuestion++;
 
+  //Tramite questa funzione permettiamo di ciclare l'array di domande
   if (currentQuestion < questionsEasy.length) {
     displayQuestion();
     circle.classList.remove("animation");
     countdown = 50;
     countdownNumberEl.textContent = countdown;
+    //Così applichiamo il refresh del mouse al click
     setTimeout(() => {
       circle.classList.add("animation");
     }, 10);

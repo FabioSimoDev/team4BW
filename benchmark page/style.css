@@ -37,6 +37,7 @@ img {
   width: 200px;
 }
 
+/*Stili del bottone delle risposte e centratura */
 #buttons {
   margin-top: 3em;
   /* display: flex; */
@@ -63,63 +64,6 @@ button {
   background-color: transparent;
   font-family: "Outfit", sans-serif;
   font-size: large;
-}
-
-.countdown-timer {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin-left: auto;
-  margin-right: 20em;
-  text-align: top;
-}
-
-.countdown-timer svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.countdown-timer .timer-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: #fff;
-}
-svg .animation {
-  stroke-dasharray: 286px;
-  stroke-dashoffset: 0px;
-  animation: countdown 50s linear infinite forwards;
-}
-@keyframes countdown {
-  from {
-    stroke-dashoffset: 0px;
-  }
-  to {
-    stroke-dashoffset: 286px;
-  }
-}
-
-footer {
-  height: 15vh;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%);
-}
-
-.page-number {
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-#page-number-span {
-  color: #b51289;
-  font-family: "Inter", sans-serif;
 }
 
 button:hover {
@@ -157,6 +101,66 @@ button:hover::before {
   transition: all 0.3s ease;
 }
 
+/*Stile del countdown + animazione svg*/
+.countdown-timer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: 20em;
+  text-align: top;
+}
+
+.countdown-timer svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.countdown-timer .timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+}
+svg .animation {
+  stroke-dasharray: 286px;
+  stroke-dashoffset: 0px;
+  animation: countdown 50s linear infinite forwards;
+}
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 286px;
+  }
+}
+
+/*Stili del numero pagina dinamico*/
+footer {
+  height: 15vh;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.page-number {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#page-number-span {
+  color: #b51289;
+  font-family: "Inter", sans-serif;
+}
+
+/*Pagina responsive su vari schermi*/
 @media (min-width: 1600px) and (max-width: 1710px) {
   main {
     margin: 10em;
