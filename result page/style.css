@@ -11,12 +11,12 @@ body {
   background-size: 100%;
 }
 
+/* contenitori principali */
 .container {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 
-  /* font-family: "Nunito Sans", sans-serif; */
   font-family: "Inter", sans-serif;
   color: #e7e7eb;
   margin-top: 5em;
@@ -28,14 +28,17 @@ body {
   padding: 2em 5em;
 }
 
+/* logo EPICODE, >> da aggiungere una classe o un ID. */
 img {
   width: 170px;
 }
 
+/* main -- centra il title. */
 main {
   text-align: center;
 }
 
+/* titoli della pagina */
 h1,
 h5,
 .percentage,
@@ -61,14 +64,17 @@ h5 {
 }
 
 p {
-  font-size: 3em;
+  /* font-size: 3em; */
+  margin: 0;
   display: inline-block;
 }
 
+/* contenitore del graficoe della legenda del grafico */
 #chartContainer {
   display: inline-block;
 }
 
+/* stile del contatore delle domande corrette e sbagliate */
 .question {
   font-size: 25px;
   font-weight: 300;
@@ -77,6 +83,7 @@ p {
   margin-top: 10px;
 }
 
+/* bottone 'Rate Us', bisogna aggiungere una classe o un ID. */
 button {
   font-size: 20px;
   font-weight: 700;
@@ -100,61 +107,17 @@ a {
   text-decoration: none;
 }
 
-.percentage {
-  font-weight: 700;
-}
-
-/* Stile per il contenitore principale */
+/* stile per il contenitore principale delle colonne sinistra/centro/destra */
 .columns-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Stile per le colonne sinistra e destra */
+/* stile per le colonne sinistra e destra */
 .left-column,
 .right-column {
-  text-align: center;
   flex: 1;
-}
-
-/* Stile per il centro della colonna */
-.center-column {
-  flex: 2;
-  text-align: center;
-}
-
-/* Stile per il testo principale */
-p {
-  font-size: 16px;
-  margin: 0;
-  word-wrap: keep-all;
-}
-
-/* Stile per le percentuali */
-.percentage {
-  font-size: 65px;
-  font-weight: bold;
-  color: #007bff;
-}
-
-#correctAnswersPercentage {
-  color: #28a745;
-  text-shadow: 0px 0px 30px black;
-}
-
-#wrongAnswersPercentage {
-  color: #bf0086;
-  text-shadow: 0px 0px 10px black;
-}
-
-.columns-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.left-column,
-.right-column {
   width: 20%;
 }
 
@@ -172,11 +135,33 @@ p {
   /* font-weight: bold; */
 }
 
+/* stile per la colonna centrale */
 .center-column {
-  width: 60%;
+  flex: 2;
   text-align: center;
+  width: 60%;
 }
 
+/* stile per le percentuali */
+.percentage {
+  font-size: 65px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* stile percentuale domande corrette */
+#correctAnswersPercentage {
+  color: #28a745;
+  text-shadow: 0px 0px 30px black;
+}
+
+/* stile percentuale doamnde sbagliate */
+#wrongAnswersPercentage {
+  color: #bf0086;
+  text-shadow: 0px 0px 10px black;
+}
+
+/* stile per il grafico */
 #donut-chart {
   /* position: relative; */
   width: 400px;
@@ -186,10 +171,12 @@ p {
   border-radius: 50%;
 }
 
+/* stile del contenitore del grafico */
 #chart-container {
   position: relative;
 }
 
+/* stile della legenda personalizzata */
 #custom-legend {
   position: absolute;
   top: 50%;
@@ -217,6 +204,7 @@ p {
   font-size: 20px;
 }
 
+/* MEDIA QUERY */
 @media (min-width: 700px) and (max-width: 1200px) {
   body {
     background-size: cover;
