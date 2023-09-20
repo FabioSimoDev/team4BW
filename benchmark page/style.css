@@ -1,1 +1,224 @@
 /* STILI CSS DELLA PAGINA */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit:wght@600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  background-image: url(../assets/bg.jpg);
+  background-size: cover;
+}
+
+#container {
+  margin: 4em;
+}
+
+#image {
+  display: inline-block;
+}
+
+main {
+  margin-left: 20em;
+  margin-right: 20em;
+  margin-top: 5em;
+  text-align: center;
+  position: relative;
+}
+
+img {
+  width: 200px;
+}
+
+.question {
+  font-family: "Outfit", sans-serif;
+}
+
+/*Stili del bottone delle risposte e centratura */
+#buttons {
+  margin-top: 3em;
+  /* display: flex; */
+  flex-wrap: wrap;
+  padding: 0px 100px;
+  justify-content: center;
+}
+
+.button1,
+.button2,
+.button3,
+.button4 {
+  margin: 1em;
+  display: inline;
+}
+
+button {
+  color: white;
+  margin: 1em;
+  width: 300px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  height: 60px;
+  background-color: transparent;
+  font-family: "Outfit", sans-serif;
+  font-size: large;
+}
+
+button:hover {
+  transition: all 0.3s ease;
+  background-color: #b51289;
+}
+
+button {
+  position: relative;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  padding: 3.8px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.hover:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 2%,
+    rgba(181, 18, 137, 1) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+#correct-border::before {
+  /*background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 183, 255, 0.5) 100%
+  );*/
+  animation: borderColor 1s;
+}
+#correct-border {
+  transition: all 1s ease;
+}
+
+@keyframes borderColor {
+  100% {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(0, 183, 255, 0.5) 100%
+    );
+  }
+}
+
+@keyframes correct {
+  50% {
+    background-color: rgba(0, 183, 255, 0.5);
+  }
+}
+
+/*Stile del countdown + animazione svg*/
+.textSpan,
+.textSpan2 {
+  font-family: "Inter", sans-serif;
+  display: inline-block;
+  text-align: center;
+  font-size: 10px;
+  line-height: 5px;
+  padding: 0 7px;
+  opacity: 0.5;
+}
+
+.textSpan1 {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+}
+
+.timer-text {
+  position: relative;
+  text-align: center;
+}
+
+.countdown-timer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: 20em;
+  text-align: top;
+}
+
+.countdown-timer svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.countdown-timer .timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+}
+svg .animation {
+  stroke-dasharray: 286px;
+  stroke-dashoffset: 0px;
+  animation: countdown 50s linear infinite forwards;
+}
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 286px;
+  }
+}
+
+/*Stili del numero pagina dinamico*/
+footer {
+  height: 15vh;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.page-number {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#page-number-span {
+  color: #b51289;
+  font-family: "Inter", sans-serif;
+}
+
+/*Pagina responsive su vari schermi*/
+@media (min-width: 1600px) and (max-width: 1710px) {
+  main {
+    margin: 10em;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1600px) {
+  main {
+    margin: 5em;
+  }
+}
+
+@media (min-width: 1710px) {
+  main {
+    margin: 5em 20em;
+  }
+}

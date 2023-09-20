@@ -9,24 +9,43 @@
   </head>
   <body>
     <!-- qui andrà la struttura della pagina -->
-    <div class="container">
+    <div id="container">
       <header id="header">
         <div id="image">
-          <img src="" alt="Logo EPICODE" />
+          <img src="../assets/epicode_logo.png" alt="Logo EPICODE" />
         </div>
-        <span id="contactor"></span>
+        <!--Qui c'è il countdown timer dinamico per il cerchio-->
+        <div class="countdown-timer">
+          <svg viewBox="0 0 100 100">
+            <circle
+              class="animation"
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#00ffff"
+              stroke-width="11"
+            />
+          </svg>
+          <!--Timer dinamico-->
+
+          <div class="timer-text"></div>
+        </div>
       </header>
       <main>
-        <h1>How can I create checkbox in HTML?</h1>
+        <!--Domanda dinamica-->
+        <div class="question"></div>
+        <!--Bottoni per le varie risposte possibili-->
         <div id="buttons">
-          <div><button class="button1"></button></div>
-          <div><button class="button2"></button></div>
-          <div><button class="button3"></button></div>
-          <div><button class="button4"></button></div>
+          <div class="button1 hover"><button></button></div>
+          <div class="button2 hover"><button></button></div>
+          <div class="button3 hover"><button></button></div>
+          <div class="button4 hover"><button></button></div>
         </div>
       </main>
       <footer>
-        <p class="page number"></p>
+        <!--Numero delle domande nella pagina dinamico-->
+        <p class="page-number"></p>
       </footer>
     </div>
     <script src="script.js"></script>
