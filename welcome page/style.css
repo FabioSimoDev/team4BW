@@ -1,18 +1,22 @@
 /* STILI CSS DELLA PAGINA */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit:wght@600;700&display=swap");
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Outfit", sans-serif;
   background-image: url(../assets/bg.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 #img img {
   width: 180px;
 }
+
 main {
   margin: 4em;
 }
+
 h2 {
   color: white;
   margin-top: 50px;
@@ -20,6 +24,7 @@ h2 {
   font-size: 60px;
   width: 400;
 }
+
 span {
   font-weight: 800;
 }
@@ -33,13 +38,13 @@ span {
 
 #paragraph {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 17px;
 }
 
 #list {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   margin-top: 30px;
   line-height: 2;
 }
@@ -75,14 +80,25 @@ button:hover {
   left: 21%;
   transform: translate(-50%, -50%);
 }
+
 ol {
   list-style-type: disc;
   margin-left: 2em;
 }
+
+li {
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: scale(1.004);
+}
+
 #conteiner {
   width: 90%;
   margin: auto;
 }
+
 input[type="checkbox"] {
   background: none;
 }
@@ -166,4 +182,6 @@ a {
   color: white;
   text-decoration: none;
   color: rgb(16, 16, 16);
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
 }
