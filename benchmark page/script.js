@@ -338,8 +338,15 @@ const startQuiz = function () {
   displayQuestion();
 };
 
+const changePage = function () {
+  location.replace('../result page/index.html')
+}
 //Questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
+  if (currentQuestion === questionsEasy.length) {
+    changePage()
+    return
+  }
   pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
     }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
   answer.forEach((element) => {
@@ -367,33 +374,62 @@ const displayQuestion = function () {
   }
 };
 
+
 //Ci permette di passare alla domana successiva al click del mouse
 const answerClick = function (event) {
   const circle = document.querySelector("svg circle");
   const selectedAnswer = event.target.textContent;
   const correctAnswer = questionsEasy[currentQuestion].correct_answer;
 
+  let correctNone = false
   //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
   if (selectedAnswer === correctAnswer) {
     score += 1;
+    correctNone = true
   }
 
   currentQuestion++;
 
-  //Tramite questa funzione permettiamo di ciclare l'array di domande
-  if (currentQuestion < questionsEasy.length) {
-    displayQuestion();
-    circle.classList.remove("animation");
-    countdown = 50;
-    countdownNumberEl.textContent = countdown;
-    //Così applichiamo il refresh del mouse al click
+  if (correctNone) {
+    event.target.style.animation = 'correct 2s linear 1'
     setTimeout(() => {
-      circle.classList.add("animation");
-    }, 10);
-    stopTimer();
-    console.log(timerCountdown);
-    timer();
+      displayQuestion();
+      circle.classList.remove("animation");
+      countdown = 50;
+      countdownNumberEl.textContent = countdown;
+      //Così applichiamo il refresh del mouse al click
+      setTimeout(() => {
+        circle.classList.add("animation");
+      }, 10);
+      stopTimer();
+      console.log(timerCountdown);
+      timer();
+      event.target.style.animation = 'none'
+    }, 2000)
   } else {
+    answer.forEach((element) => {
+      if (element.textContent === correctAnswer) {
+        element.style.animation = 'correct 2s linear 1'
+        setTimeout(() => {
+          displayQuestion();
+          circle.classList.remove("animation");
+          countdown = 50;
+          countdownNumberEl.textContent = countdown;
+          //Così applichiamo il refresh del mouse al click
+          setTimeout(() => {
+            circle.classList.add("animation");
+          }, 10);
+          stopTimer();
+          console.log(timerCountdown);
+          timer();
+          element.style.animation = 'none'
+        }, 2000)
+      }
+    })
+  }
+  //Tramite questa funzione permettiamo di ciclare l'array di domande
+
+  if (currentQuestion === questionsEasy.length) {
     alert("Hai completato il quiz! Punteggio: " + score);
   }
 };
