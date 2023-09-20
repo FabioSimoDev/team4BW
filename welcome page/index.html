@@ -45,36 +45,38 @@
         <div id="class">
           <h3>Level of difficult</h3>
         </div>
-        <label
-          for="easy-checkbox"
-          class="checkbox-container"
-          onclick="checkBoxLimiter()"
-          >Easy
-          <input type="checkbox" id="easy-checkbox" />
-          <span class="checkmark"></span>
-        </label>
-        <label
-          for="medium-checkbox"
-          class="checkbox-container"
-          onclick="checkBoxLimiter()"
-          >Medium
-          <input type="checkbox" id="medium-checkbox" />
-          <span class="checkmark"></span>
-        </label>
-        <label
-          for="hard-checkbox"
-          class="checkbox-container"
-          onclick="checkBoxLimiter()"
-          >Hard
-          <input type="checkbox" id="hard-checkbox" />
-          <span class="checkmark"></span>
-        </label>
+        <div id="difficult-checkboxs">
+          <label
+            for="easy-checkbox"
+            class="checkbox-container"
+            onclick="checkBoxLimiter(this)"
+            >Easy
+            <input type="checkbox" id="easy-checkbox" />
+            <span class="checkmark"></span>
+          </label>
+          <label
+            for="medium-checkbox"
+            class="checkbox-container"
+            onclick="checkBoxLimiter(this)"
+            >Medium
+            <input type="checkbox" id="medium-checkbox" />
+            <span class="checkmark"></span>
+          </label>
+          <label
+            for="hard-checkbox"
+            class="checkbox-container"
+            onclick="checkBoxLimiter(this)"
+            >Hard
+            <input type="checkbox" id="hard-checkbox" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
         <div id="submitcontainer">
           <div id="checkbox">
             <label
               for="newbut"
               class="checkbox-container"
-              onclick="checkBoxLimiter()"
+              onclick="checkBoxLimiter(this)"
               >I promise to answer myself without help from anyone
               <input type="checkbox" id="newbut" />
               <span class="checkmark"></span>
