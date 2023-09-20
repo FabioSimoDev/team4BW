@@ -4,7 +4,7 @@
 const checkboxes = document.querySelectorAll(
   "#difficult-checkboxs input[type=checkbox]"
 );
-const required = document.getElementById('newbut')
+const required = document.getElementById("newbut");
 let selectedCheckBoxDefinitive;
 
 const checkBoxLimiter = function (e) {
@@ -37,8 +37,11 @@ const changePage = function () {
     window.location.href = url;
     //prima pagina.html --> prima pagina.html?difficulty+easy
     //seconda pagina.html --> const difficulty = difficulty (easy)
-    //http://127.0.0.1:5500/welcome%20page/index.html --> http://127.0.0.1:5500/welcome%20page/index.html?difficulty=easy   
+    //http://127.0.0.1:5500/welcome%20page/index.html --> http://127.0.0.1:5500/welcome%20page/index.html?difficulty=easy
   } else {
-    alert('mortadella affumicata')
+    required.parentElement.classList.add("checkbox-required-anim");
+    const timer = setTimeout(() => {
+      required.parentElement.classList.remove("checkbox-required-anim");
+    }, 800);
   }
 };

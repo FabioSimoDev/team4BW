@@ -10,7 +10,8 @@ body {
 }
 
 #img img {
-  width: 180px;
+  width: 165px;
+  margin-top: 0.3em;
 }
 
 main {
@@ -67,13 +68,16 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 button:hover {
   transform: scale(1.02);
 }
+
 #submitcontainer {
   position: relative;
   margin-top: 3em;
 }
+
 #checkbox {
   position: absolute;
   top: 50%;
@@ -95,7 +99,8 @@ li:hover {
 }
 
 #conteiner {
-  width: 90%;
+  width: 80%;
+  padding: 2em 5em;
   margin: auto;
 }
 
@@ -184,4 +189,30 @@ a {
   color: rgb(16, 16, 16);
   font-family: "Outfit", sans-serif;
   font-weight: bold;
+}
+
+.checkbox-required-anim {
+  animation: required 0.8s ease-in-out;
+}
+
+/* shake animation: */
+@keyframes required {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-7px, 0);
+  }
+  40% {
+    transform: translate(7px, 0);
+  }
+  60% {
+    transform: translate(-7px, 0);
+  }
+  80% {
+    transform: translate(7px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
