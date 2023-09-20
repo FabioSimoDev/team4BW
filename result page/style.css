@@ -1,1 +1,273 @@
 /* STILI CSS DELLA PAGINA */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,800;1,6..12,400;1,6..12,500;1,6..12,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Outfit:wght@600;700&display=swap");
+
+body {
+  background-color: black;
+  background-image: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* contenitori principali */
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-family: "Inter", sans-serif;
+  color: #e7e7eb;
+  margin-top: 5em;
+
+  position: relative;
+}
+
+.block {
+  padding: 2em 5em;
+}
+
+/* logo EPICODE, >> da aggiungere una classe o un ID. */
+img {
+  width: 170px;
+}
+
+/* main -- centra il title. */
+main {
+  text-align: center;
+}
+
+/* titoli della pagina */
+h1,
+h5,
+.percentage,
+.left-column p,
+.right-column p {
+  font-family: "Outfit", sans-serif;
+}
+
+.title {
+  margin-bottom: 4em;
+}
+
+h1 {
+  color: white;
+  font-size: 3.2em;
+  font-weight: 800;
+  margin: 0.1em 0;
+}
+
+h5 {
+  font-size: 1.7em;
+  margin-bottom: 1.1em;
+}
+
+p {
+  /* font-size: 3em; */
+  margin: 0;
+  display: inline-block;
+}
+
+/* contenitore del graficoe della legenda del grafico */
+#chartContainer {
+  display: inline-block;
+}
+
+/* stile del contatore delle domande corrette e sbagliate */
+.question {
+  font-size: 25px;
+  font-weight: 300;
+  font-family: "Inter", sans-serif;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+/* bottone 'Rate Us', bisogna aggiungere una classe o un ID. */
+button {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 70px;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  margin: 2em 0em;
+  display: block;
+  margin: auto;
+  margin-top: 4em;
+  box-shadow: 0px 0px 25px 10px #0000ff2b;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* stile per il contenitore principale delle colonne sinistra/centro/destra */
+.columns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* stile per le colonne sinistra e destra */
+.left-column,
+.right-column {
+  flex: 1;
+  width: 20%;
+}
+
+.left-column {
+  text-align: left;
+}
+
+.right-column {
+  text-align: right;
+}
+
+.left-column p,
+.right-column p {
+  font-size: 60px;
+  /* font-weight: bold; */
+}
+
+/* stile per la colonna centrale */
+.center-column {
+  flex: 2;
+  text-align: center;
+  width: 60%;
+}
+
+/* stile per le percentuali */
+.percentage {
+  font-size: 65px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* stile percentuale domande corrette */
+#correctAnswersPercentage {
+  color: #28a745;
+  text-shadow: 0px 0px 30px black;
+}
+
+/* stile percentuale doamnde sbagliate */
+#wrongAnswersPercentage {
+  color: #bf0086;
+  text-shadow: 0px 0px 10px black;
+}
+
+/* stile per il grafico */
+#donut-chart {
+  /* position: relative; */
+  width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 40px 0px black;
+  border-radius: 50%;
+}
+
+/* stile del contenitore del grafico */
+#chart-container {
+  position: relative;
+}
+
+/* stile della legenda personalizzata */
+#custom-legend {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#custom-legend p {
+  font-size: 15px;
+  line-height: 1.4em;
+}
+
+.legend-color {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+#congratulations-text {
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+#congratulations-text,
+.legend-color {
+  font-size: 20px;
+}
+
+/* MEDIA QUERY */
+@media (min-width: 700px) and (max-width: 1200px) {
+  body {
+    background-size: cover;
+  }
+
+  .container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .block {
+    padding: 1em 1em;
+  }
+
+  img {
+    width: 200px;
+  }
+
+  /* #donut-chart {
+    width: 200px;
+    height: 200px;
+  } */
+
+  .columns-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 90vw;
+    margin: auto;
+  }
+
+  .container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .left-column,
+  .right-column,
+  .center-column {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  #donut-chart {
+    margin: 3em 0 5em;
+  }
+
+  img {
+    margin-bottom: 6em;
+    width: 130px;
+  }
+
+  button {
+    margin-bottom: 5em;
+  }
+}

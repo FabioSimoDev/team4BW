@@ -5,35 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>clone benchmark EPICODE</title>
   </head>
   <body>
-    <nav>
-      <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
-    </nav>
-    <main>
-      <h1>Result</h1>
-      <p>
-        <!-- gli span vanno completati in javascript in base ai risultati del benchmark. -->
-        <!-- i <br> servono ad inserire rotture di riga (andare a capo). -->
-        Correct<br /><span id="correctAnswersPercentage"></span><br /><span
-          id="correctAnswersCount"
-        ></span>
-        questions
-      </p>
-      <!-- questo div con ID "chartContainer" conterrá il grafico, probabilmente da inserire in javascript. -->
-      <div id="chartContainer"></div>
-      <p>
-        Wrong<span id="wrongAnswersPercentage"></span><br /><span
-          id="wrongAnswersCount"
-        ></span>
-        questions
-      </p>
-      <!-- collegamento alla pagina feedback -->
-      <a class="link" href="../feedback page/index.html"
-        ><button type="button" id="rate-us-btn">Rate Us</button></a
-      >
-    </main>
+    <div class="container">
+      <div class="block">
+        <nav>
+          <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
+        </nav>
+        <main>
+          <div class="title">
+            <h1>Results</h1>
+            <h5>The summary of your answers:</h5>
+          </div>
+          <div class="columns-container">
+            <div class="left-column">
+              <p>
+                <!-- gli span vanno completati in javascript in base ai risultati del benchmark. -->
+                <!-- i <br> servono ad inserire rotture di riga (andare a capo). -->
+                Correct <br /><span
+                  class="percentage"
+                  id="correctAnswersPercentage"
+                  >50%</span
+                ><br /><span class="question" id="correctAnswersCount"
+                  >5/6 </span
+                ><span class="question">questions</span>
+              </p>
+            </div>
+            <div class="center-column">
+              <!-- questo canvas con ID "donut-chart" conterrá il grafico, probabilmente da inserire in javascript. -->
+              <div id="chart-container">
+                <canvas id="donut-chart"></canvas>
+                <div id="custom-legend">
+                  <div class="text-inside-graph">
+                    <p>
+                      <span id="congratulations-text">Congratulations!</span
+                      ><br /><span class="legend-color"
+                        >You passed the exam.</span
+                      ><br /><br />we'll send you a certificate in a few
+                      minutes.<br />check your email (including promotions /
+                      spam folder
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right-column">
+              <p>
+                Wrong <br /><span class="percentage" id="wrongAnswersPercentage"
+                  >60.3%</span
+                ><br /><span class="question" id="wrongAnswersCount">5/5</span>
+                <span class="question">questions</span>
+              </p>
+            </div>
+          </div>
+          <!-- collegamento alla pagina feedback -->
+          <a class="link" href="../feedback page/index.html"
+            ><button type="button" id="rate-us-btn">RATE US</button></a
+          >
+        </main>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
