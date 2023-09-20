@@ -1,3 +1,28 @@
+const url = window.location; //otteniamo la pagina
+const parameters = new URLSearchParams(url.search); //cerchiamo se ci sono dei parametri
+let correctAnswer;
+let wrongAnswer;
+let questionsNumber;
+
+const correctAnswersText = document.getElementById("correctAnswersPercentage");
+const wrongAnswersText = document.getElementById("wrongAnswersPercentage");
+const spanCorrectText = document.getElementById("correctAnswersCount");
+const spanWrongAnswersText = document.getElementById("wrongAnswersCount");
+
+//se c'è il parametro "correctAnswer" e "wrongAnswers"
+if (
+  parameters.has("correctAnswer") &&
+  parameters.has("wrongAnswers") &&
+  parameters.has("question")
+) {
+  correctAnswer = parameters.get("correctAnswer");
+  wrongAnswer = parameters.get("wrongAnswers");
+  questionsNumber = parameters.get("question");
+}
+
+const correctPercentage = (correctAnswer * 100) / questionsNumber;
+const wrongPercentage = (wrongAnswer * 100) / questionsNumber;
+
 //definiamo un oggetto "data" che contiene i dati per il grafico a ciambella
 const data = {
   labels: ["Risposte Corrette", "Risposte Sbagliate"], //etichette per le due fette del grafico
@@ -39,7 +64,12 @@ const updateChart = function (correctAnswers, wrongAnswers) {
 };
 
 //chiamiamo la funzione "updateChart" con i dati iniziali
-updateChart(6, 4);
+updateChart(correctAnswer, wrongAnswer);
+
+correctAnswersText.textContent = correctPercentage + "%";
+wrongAnswersText.textContent = wrongPercentage + "%";
+spanCorrectText.textContent = correctAnswer + "/" + questionsNumber + " ";
+spanWrongAnswersText.textContent = wrongAnswer + "/" + questionsNumber;
 
 //otteniamo l'elemento HTML con id "custom-legend"
 let customLegend = document.getElementById("custom-legend");

@@ -1,13 +1,13 @@
 // codice JavaScript della pagina
 
-const url = window.location
-console.log(url)
+const url = window.location;
+console.log(url);
 const parameters = new URLSearchParams(url.search);
-let difficulty
-console.log(parameters)
-if (parameters.has('difficulty')) {
-  difficulty = parameters.get('difficulty')
-  console.log('trovato')
+let difficulty;
+console.log(parameters);
+if (parameters.has("difficulty")) {
+  difficulty = parameters.get("difficulty");
+  console.log("trovato");
 }
 
 //Funzione per il timer
@@ -34,38 +34,43 @@ const questionContainer = document.querySelector(".question");
 const answer = document.querySelectorAll("#buttons button");
 
 const changePage = function () {
-  window.location.href = "../result page/index.html";
+  window.location.href = `../result page/index.html?correctAnswer=${score}&wrongAnswers=${
+    currentQuestion - score
+  }&question=${currentQuestion}`;
 };
 //Questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
-  console.log(difficulty)
+  console.log(difficulty);
   if (currentQuestion === questionsEasy.length) {
     changePage();
     return;
   }
-  let currentQue
-  console.log(questionsHard[currentQuestion].question)
+  let currentQue;
+  console.log(questionsHard[currentQuestion].question);
   switch (difficulty.toLowerCase()) {
-    case 'easy':
-      currentQue = questionsEasy[currentQuestion]
-      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
-        }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
-      console.log('easy')
-      break
-    case 'medium':
-      currentQue = questionsMedium[currentQuestion]
-      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
-        }<span id="page-number-span"> / ${questionsMedium.length}</span>`;
-      console.log('medium')
-      break
-    case 'hard':
-      currentQue = questionsHard[currentQuestion]
-      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
-        }<span id="page-number-span"> / ${questionsHard.length}</span>`;
-      console.log('hard')
-      break
+    case "easy":
+      currentQue = questionsEasy[currentQuestion];
+      pageNumber.innerHTML = `QUESTION ${
+        currentQuestion + 1
+      }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+      console.log("easy");
+      break;
+    case "medium":
+      currentQue = questionsMedium[currentQuestion];
+      pageNumber.innerHTML = `QUESTION ${
+        currentQuestion + 1
+      }<span id="page-number-span"> / ${questionsMedium.length}</span>`;
+      console.log("medium");
+      break;
+    case "hard":
+      currentQue = questionsHard[currentQuestion];
+      pageNumber.innerHTML = `QUESTION ${
+        currentQuestion + 1
+      }<span id="page-number-span"> / ${questionsHard.length}</span>`;
+      console.log("hard");
+      break;
   }
-  console.log(currentQue.question.length)
+  console.log(currentQue.question.length);
   answer.forEach((element) => {
     element.style.display = "inline";
   });
@@ -430,17 +435,16 @@ const answerClick = function (event) {
   const circle = document.querySelector("svg circle");
   const selectedAnswer = event.target.textContent;
   switch (difficulty.toLowerCase()) {
-    case 'easy':
+    case "easy":
       correctAnswer = questionsEasy[currentQuestion].correct_answer;
-      break
-    case 'medium':
+      break;
+    case "medium":
       correctAnswer = questionsMedium[currentQuestion].correct_answer;
-      break
-    case 'hard':
+      break;
+    case "hard":
       correctAnswer = questionsHard[currentQuestion].correct_answer;
-      break
+      break;
   }
-
 
   let correctNone = false;
   //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
