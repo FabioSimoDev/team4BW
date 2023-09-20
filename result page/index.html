@@ -8,7 +8,32 @@
     <title>clone benchmark EPICODE</title>
   </head>
   <body>
-    <!-- qui andrà la struttura della pagina -->
+    <nav>
+      <img src="../assets/epicode_logo.png" alt="EPICODE logo" />
+    </nav>
+    <main>
+      <h1>Result</h1>
+      <p>
+        <!-- gli span vanno completati in javascript in base ai risultati del benchmark. -->
+        <!-- i <br> servono ad inserire rotture di riga (andare a capo). -->
+        Correct<br /><span id="correctAnswersPercentage"></span><br /><span
+          id="correctAnswersCount"
+        ></span>
+        questions
+      </p>
+      <!-- questo div con ID "chartContainer" conterrá il grafico, probabilmente da inserire in javascript. -->
+      <div id="chartContainer"></div>
+      <p>
+        Wrong<span id="wrongAnswersPercentage"></span><br /><span
+          id="wrongAnswersCount"
+        ></span>
+        questions
+      </p>
+      <!-- collegamento alla pagina feedback -->
+      <a class="link" href="../feedback page/index.html"
+        ><button type="button" id="rate-us-btn">Rate Us</button></a
+      >
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
