@@ -3,14 +3,76 @@
 let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
 let timerCountdown;
+const text1 = document.createElement('span')
+text1.textContent = 'SECONDS'
+text1.classList.add('textSpan')
+countdownNumberEl.appendChild(text1)
+const text2 = document.createElement('span')
+text2.classList.add('textSpan1')
+countdownNumberEl.appendChild(text2)
+const text3 = document.createElement('span')
+text3.textContent = 'REMAINING'
+text3.classList.add('textSpan2')
+countdownNumberEl.appendChild(text3)
+
+let currentQuestion = 0;
+let score = 0;
+//Qui cerco la posizione dei vari elementi dell'HTML
+const pageNumber = document.querySelector(".page-number");
+const questionContainer = document.querySelector(".question");
+const answer = document.querySelectorAll("#buttons button");
+
+const changePage = function () {
+  window.location.href = '../result page/index.html'
+}
+//Questa funzione permette alla parte delle domande di cambiare al click della risposta
+const displayQuestion = function () {
+  if (currentQuestion === questionsEasy.length) {
+    changePage()
+    return
+  }
+  pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
+    }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+  answer.forEach((element) => {
+    element.style.display = "inline";
+  });
+  questionContainer.style.color = "white";
+  questionContainer.style.fontSize = "40px";
+  questionContainer.style.fontWeight = "300";
+  const currentQue = questionsEasy[currentQuestion];
+  questionContainer.innerHTML = currentQue.question;
+
+  //Creiamo un array che contenga tutte le possibili risposte
+  const allOptions = currentQue.incorrect_answers.slice(); // Cloniamo l'array delle risposte errate
+  allOptions.push(currentQue.correct_answer); // Aggiungiamo la risposta corretta
+
+  const shuffle = shuffleArray(allOptions); // Mischiamo le opzioni
+  console.log(shuffle);
+
+  for (let i = 0; i < answer.length; i++) {
+    if (i >= allOptions.length) {
+      answer[i].style.display = "none";
+    }
+    answer[i].textContent = shuffle[i];
+    answer[i].addEventListener("click", answerClick); //Abbia o collegato il click del mouse alla funzione
+  }
+};
 
 const timer = function () {
   countdown = 50;
-  countdownNumberEl.textContent = countdown;
+  text2.textContent = countdown
   timerCountdown = setInterval(function () {
     countdown = --countdown <= 0 ? 50 : countdown;
+    if (countdown === 1) {
+      setTimeout(() => {
+        countdown = 50
+        currentQuestion++
+        displayQuestion()
+      }, 1000);
 
-    countdownNumberEl.textContent = countdown;
+    }
+    text2.textContent = countdown
+
   }, 1000);
 };
 //Funzione per far refreshare il timer al click del mouse sulla risposta per poi ripartire alla nuova domanda
@@ -325,12 +387,7 @@ const questionsHard = [
   }
 ];
 
-let currentQuestion = 0;
-let score = 0;
-//Qui cerco la posizione dei vari elementi dell'HTML
-const pageNumber = document.querySelector(".page-number");
-const questionContainer = document.querySelector(".question");
-const answer = document.querySelectorAll("#buttons button");
+
 
 //Funzione che da il via al quiz 
 const startQuiz = function () {
@@ -338,41 +395,7 @@ const startQuiz = function () {
   displayQuestion();
 };
 
-const changePage = function () {
-  location.replace('../result page/index.html')
-}
-//Questa funzione permette alla parte delle domande di cambiare al click della risposta
-const displayQuestion = function () {
-  if (currentQuestion === questionsEasy.length) {
-    changePage()
-    return
-  }
-  pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
-    }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
-  answer.forEach((element) => {
-    element.style.display = "inline";
-  });
-  questionContainer.style.color = "white";
-  questionContainer.style.fontSize = "40px";
-  questionContainer.style.fontWeight = "300";
-  const currentQue = questionsEasy[currentQuestion];
-  questionContainer.innerHTML = currentQue.question;
 
-  //Creiamo un array che contenga tutte le possibili risposte
-  const allOptions = currentQue.incorrect_answers.slice(); // Cloniamo l'array delle risposte errate
-  allOptions.push(currentQue.correct_answer); // Aggiungiamo la risposta corretta
-
-  const shuffle = shuffleArray(allOptions); // Mischiamo le opzioni
-  console.log(shuffle);
-
-  for (let i = 0; i < answer.length; i++) {
-    if (i >= allOptions.length) {
-      answer[i].style.display = "none";
-    }
-    answer[i].textContent = shuffle[i];
-    answer[i].addEventListener("click", answerClick); //Abbia o collegato il click del mouse alla funzione
-  }
-};
 
 
 //Ci permette di passare alla domana successiva al click del mouse
@@ -392,6 +415,8 @@ const answerClick = function (event) {
 
   if (correctNone) {
     event.target.style.animation = 'correct 2s linear 1'
+    event.target.id = 'correct-border'
+    event.target.classList.remove('hover')
     setTimeout(() => {
       displayQuestion();
       circle.classList.remove("animation");
@@ -404,6 +429,8 @@ const answerClick = function (event) {
       stopTimer();
       console.log(timerCountdown);
       timer();
+      event.target.removeAttribute('id');
+      event.target.classList.add('hover')
       event.target.style.animation = 'none'
     }, 2000)
   } else {

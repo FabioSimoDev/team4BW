@@ -86,7 +86,7 @@ button::before {
   mask-composite: exclude;
 }
 
-button:hover::before {
+.hover:hover::before {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 1) 0%,
@@ -96,17 +96,60 @@ button:hover::before {
   transition: all 0.3s ease;
 }
 
+#correct-border::before {
+  /*background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 183, 255, 0.5) 100%
+  );*/
+  animation: borderColor 1s;
+}
+#correct-border {
+  transition: all 1s ease;
+}
+
+@keyframes borderColor {
+  100% {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(0, 183, 255, 0.5) 100%
+    );
+  }
+}
+
 @keyframes correct {
   50% {
-    background-color: #3aafaf;
+    background-color: rgba(0, 183, 255, 0.5);
   }
 }
 
 /*Stile del countdown + animazione svg*/
+.textSpan,
+.textSpan2 {
+  font-family: "Inter", sans-serif;
+  display: inline-block;
+  text-align: center;
+  font-size: 10px;
+  line-height: 5px;
+  padding: 0 7px;
+  opacity: 0.5;
+}
+
+.textSpan1 {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+}
+
+.timer-text {
+  position: relative;
+  text-align: center;
+}
+
 .countdown-timer {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   margin-left: auto;
   margin-right: 20em;
   text-align: top;
