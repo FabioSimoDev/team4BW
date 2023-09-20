@@ -1,19 +1,19 @@
 // codice JavaScript della pagina
-//Funzione per il timer 
+//Funzione per il timer
 let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
 let timerCountdown;
-const text1 = document.createElement('span')
-text1.textContent = 'SECONDS'
-text1.classList.add('textSpan')
-countdownNumberEl.appendChild(text1)
-const text2 = document.createElement('span')
-text2.classList.add('textSpan1')
-countdownNumberEl.appendChild(text2)
-const text3 = document.createElement('span')
-text3.textContent = 'REMAINING'
-text3.classList.add('textSpan2')
-countdownNumberEl.appendChild(text3)
+const text1 = document.createElement("span");
+text1.textContent = "SECONDS";
+text1.classList.add("textSpan");
+countdownNumberEl.appendChild(text1);
+const text2 = document.createElement("span");
+text2.classList.add("textSpan1");
+countdownNumberEl.appendChild(text2);
+const text3 = document.createElement("span");
+text3.textContent = "REMAINING";
+text3.classList.add("textSpan2");
+countdownNumberEl.appendChild(text3);
 
 let currentQuestion = 0;
 let score = 0;
@@ -23,16 +23,17 @@ const questionContainer = document.querySelector(".question");
 const answer = document.querySelectorAll("#buttons button");
 
 const changePage = function () {
-  window.location.href = '../result page/index.html'
-}
+  window.location.href = "../result page/index.html";
+};
 //Questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
   if (currentQuestion === questionsEasy.length) {
-    changePage()
-    return
+    changePage();
+    return;
   }
-  pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
-    }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+  pageNumber.innerHTML = `QUESTION ${
+    currentQuestion + 1
+  }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
   answer.forEach((element) => {
     element.style.display = "inline";
   });
@@ -60,19 +61,18 @@ const displayQuestion = function () {
 
 const timer = function () {
   countdown = 50;
-  text2.textContent = countdown
+  text2.textContent = countdown;
   timerCountdown = setInterval(function () {
+    console.log("sono nel timer", countdown);
     countdown = --countdown <= 0 ? 50 : countdown;
     if (countdown === 1) {
       setTimeout(() => {
-        countdown = 50
-        currentQuestion++
-        displayQuestion()
+        countdown = 50;
+        currentQuestion++;
+        displayQuestion();
       }, 1000);
-
     }
-    text2.textContent = countdown
-
+    text2.textContent = countdown;
   }, 1000);
 };
 //Funzione per far refreshare il timer al click del mouse sulla risposta per poi ripartire alla nuova domanda
@@ -387,16 +387,11 @@ const questionsHard = [
   }
 ];
 
-
-
-//Funzione che da il via al quiz 
+//Funzione che da il via al quiz
 const startQuiz = function () {
   currentQuestion = 0;
   displayQuestion();
 };
-
-
-
 
 //Ci permette di passare alla domana successiva al click del mouse
 const answerClick = function (event) {
@@ -404,55 +399,55 @@ const answerClick = function (event) {
   const selectedAnswer = event.target.textContent;
   const correctAnswer = questionsEasy[currentQuestion].correct_answer;
 
-  let correctNone = false
+  let correctNone = false;
   //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
   if (selectedAnswer === correctAnswer) {
     score += 1;
-    correctNone = true
+    correctNone = true;
   }
 
   currentQuestion++;
 
   if (correctNone) {
-    event.target.style.animation = 'correct 2s linear 1'
-    event.target.id = 'correct-border'
-    event.target.classList.remove('hover')
+    event.target.style.animation = "correct 2s linear 1";
+    event.target.id = "correct-border";
+    event.target.classList.remove("hover");
     setTimeout(() => {
       displayQuestion();
       circle.classList.remove("animation");
       countdown = 50;
-      countdownNumberEl.textContent = countdown;
+      text2.textContent = countdown;
       //Così applichiamo il refresh del mouse al click
       setTimeout(() => {
         circle.classList.add("animation");
       }, 10);
-      stopTimer();
       console.log(timerCountdown);
+      stopTimer();
       timer();
-      event.target.removeAttribute('id');
-      event.target.classList.add('hover')
-      event.target.style.animation = 'none'
-    }, 2000)
+      event.target.removeAttribute("id");
+      event.target.classList.add("hover");
+      event.target.style.animation = "none";
+    }, 2000);
   } else {
     answer.forEach((element) => {
       if (element.textContent === correctAnswer) {
-        element.style.animation = 'correct 2s linear 1'
+        element.style.animation = "correct 2s linear 1";
         setTimeout(() => {
           displayQuestion();
           circle.classList.remove("animation");
           countdown = 50;
-          countdownNumberEl.textContent = countdown;
+          text2.textContent = countdown;
           //Così applichiamo il refresh del mouse al click
           setTimeout(() => {
             circle.classList.add("animation");
           }, 10);
-          stopTimer();
           console.log(timerCountdown);
+          stopTimer();
           timer();
-          element.style.animation = 'none'
-        }, 2000)
+          element.style.animation = "none";
+        }, 2000);
       }
-    })
+    });
   }
   //Tramite questa funzione permettiamo di ciclare l'array di domande
 
