@@ -1,4 +1,15 @@
 // codice JavaScript della pagina
+
+const url = window.location
+console.log(url)
+const parameters = new URLSearchParams(url.search);
+let difficulty
+console.log(parameters)
+if (parameters.has('difficulty')) {
+  difficulty = parameters.get('difficulty')
+  console.log('trovato')
+}
+
 //Funzione per il timer
 let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
@@ -27,20 +38,41 @@ const changePage = function () {
 };
 //Questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
+  console.log(difficulty)
   if (currentQuestion === questionsEasy.length) {
     changePage();
     return;
   }
-  pageNumber.innerHTML = `QUESTION ${
-    currentQuestion + 1
-  }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+  let currentQue
+  console.log(questionsHard[currentQuestion].question)
+  switch (difficulty.toLowerCase()) {
+    case 'easy':
+      currentQue = questionsEasy[currentQuestion]
+      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
+        }<span id="page-number-span"> / ${questionsEasy.length}</span>`;
+      console.log('easy')
+      break
+    case 'medium':
+      currentQue = questionsMedium[currentQuestion]
+      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
+        }<span id="page-number-span"> / ${questionsMedium.length}</span>`;
+      console.log('medium')
+      break
+    case 'hard':
+      currentQue = questionsHard[currentQuestion]
+      pageNumber.innerHTML = `QUESTION ${currentQuestion + 1
+        }<span id="page-number-span"> / ${questionsHard.length}</span>`;
+      console.log('hard')
+      break
+  }
+  console.log(currentQue.question.length)
   answer.forEach((element) => {
     element.style.display = "inline";
   });
   questionContainer.style.color = "white";
   questionContainer.style.fontSize = "40px";
   questionContainer.style.fontWeight = "300";
-  const currentQue = questionsEasy[currentQuestion];
+
   questionContainer.innerHTML = currentQue.question;
 
   //Creiamo un array che contenga tutte le possibili risposte
@@ -289,16 +321,16 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
-      "The HTML5 specification introduced the <header> and <footer> elements to represent header and footer content in a document.",
+      "The HTML5 specification introduced the HEADER and FOOTER elements to represent header and footer content in a document.",
     correct_answer: "True",
     incorrect_answers: ["False"]
   },
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
       "What is the CSS property used to create a responsive layout that adapts to different screen sizes and orientations?",
     correct_answer: "flexbox",
@@ -307,7 +339,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "boolean",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
       "Which of the following is NOT a valid way to define a function in JavaScript?",
     correct_answer: "() => { /* function body */ }",
@@ -320,7 +352,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "boolean",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
       "In JavaScript, the 'this' keyword inside an arrow function refers to the calling",
     correct_answer: "True",
@@ -329,7 +361,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
       "In HTML5, the <article> element is used to define a container for navigation links.",
     correct_answer: "True",
@@ -338,7 +370,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question: "Which of the following is not a valid JavaScript data type?",
     correct_answer: "Character",
     incorrect_answers: ["undefined", "null", "boolean"]
@@ -346,7 +378,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question: "What is the result of 3 + '3' in JavaScript",
     correct_answer: "33",
     incorrect_answers: ["6", 9, 6]
@@ -354,7 +386,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question:
       "Which ECMAScript version introduced the 'class' keyword in JavaScript for defining classes?",
     correct_answer: "ECMAScript 6 (ES2015)",
@@ -367,7 +399,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "boolean",
-    difficulty: "medium",
+    difficulty: "hard",
     question: "What does the JavaScript bind() method do?",
     correct_answer:
       "Creates a new function that, when called, has its this value set to a specific value.",
@@ -380,7 +412,7 @@ const questionsHard = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "medium",
+    difficulty: "hard",
     question: "Which of the following is not a loop in JavaScript?",
     correct_answer: " if loop",
     incorrect_answers: [" for loop", "while loop", "do...while loop"]
@@ -397,7 +429,18 @@ const startQuiz = function () {
 const answerClick = function (event) {
   const circle = document.querySelector("svg circle");
   const selectedAnswer = event.target.textContent;
-  const correctAnswer = questionsEasy[currentQuestion].correct_answer;
+  switch (difficulty.toLowerCase()) {
+    case 'easy':
+      correctAnswer = questionsEasy[currentQuestion].correct_answer;
+      break
+    case 'medium':
+      correctAnswer = questionsMedium[currentQuestion].correct_answer;
+      break
+    case 'hard':
+      correctAnswer = questionsHard[currentQuestion].correct_answer;
+      break
+  }
+
 
   let correctNone = false;
   //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
