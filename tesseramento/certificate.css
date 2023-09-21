@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap");
+body {
+  background-image: url(../assets/bgx2.jpg);
+  background-size: 100%;
+  color: #ffffff;
+  height: 100%;
+}
+#container {
+  margin: 3em 3em;
+  font-family: "Inter", sans-serif;
+}
+#textTitle,
+#module {
+  display: inline-block;
+}
+h1,
+h2,
+/* h3, */
+h4 {
+  font-family: "Outfit", sans-serif;
+}
+h2 {
+  font-size: 2.6em;
+  background-color: #b9008c;
+  font-size: 2.6em;
+  background-color: #b9008c;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  padding: 0.3em 3em 0.5em 0.7em;
+  transform: skew(-20deg);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+#module {
+  margin-left: 4em;
+  text-align: end;
+  position: relative;
+  top: 27px;
+  font-size: 5em;
+}
+
+#m3 {
+  font-weight: 700;
+}
+#center {
+  margin: 7em 0em 8em 1.5em;
+}
+h3 {
+  font-size: 5em;
+  font-weight: 700;
+}
+hr {
+  width: 60px;
+
+  margin: 3em auto 3em -1em;
+  height: 5px;
+  background-color: white;
+  border-radius: 2px;
+}
+p {
+  color: #01ecef;
+  font-size: 1.2em;
+}
+.box {
+  display: inline-block;
+}
+
+input {
+  display: block;
+  background: none;
+  border: 0;
+  margin-bottom: 0.7em;
+  color: white;
+  width: 176px;
+  font-size: 2em;
+}
+label {
+  font-size: 25.3px;
+  color: #00fefe;
+  font-weight: 600;
+}
+#image {
+  width: 200px;
+}
+img {
+  width: 100%;
+  filter: drop-shadow(0 0 0.75rem rgba(74, 24, 209, 0.973));
+}
+
+#signature {
+  border-bottom: 3px solid white;
+  border-right: 1px solid black;
+  font-size: 4em;
+  width: 4.5em;
+  margin-bottom: 30px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+#signatureBlock {
+  text-align: center;
+}
+#date {
+  margin-right: 235px;
+  margin-right: 13em;
+}

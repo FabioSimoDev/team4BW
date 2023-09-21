@@ -20,3 +20,8 @@ if (
   email = parameters.get("email");
   date = parameters.get("date");
 }
+
+const date1 = document.getElementById("relase");
+const name1 = document.getElementsByTagName("h3")[0];
+name1.innerText = name + " " + lastName;
+date1.value = date;

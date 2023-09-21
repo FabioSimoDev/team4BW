@@ -7,7 +7,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
     <!--Seleziona un area della pagina-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="certificate.css" />
     <title>Certificate</title>
   </head>
-  <body></body>
+  <body>
+    <div id="container">
+      <header>
+        <div id="textTitle">
+          <h2>WebDeveloper</h2>
+          <h1>MODULE CERTIFICATION 2023</h1>
+        </div>
+        <div id="module">
+          <h4>MODULE <br /><span id="m3">M3</span></h4>
+        </div>
+      </header>
+      <main>
+        <div id="center">
+          <h3>Lorenzo Baldassari</h3>
+          <hr />
+          <p>
+            Javascript Intermediate/ES6+/DOM Traversing &
+            Manipulation/Forms/BOM/Array Methods
+          </p>
+        </div>
+      </main>
+      <footer>
+        <div class="box" id="Date">
+          <input id="relase" name="relaseDate" type="text" />
+          <label for="relaseDateBlock">RELASE DATE</label>
+        </div>
+        <div class="box" id="image">
+          <img src="../assets/epicode_logo.png" alt="epicode logo" />
+        </div>
+        <div class="box" id="signatureBlock">
+          <input type="text" name="sig" id="signature" />
+          <label for="sig">SIGNATURE</label>
+        </div>
+      </footer>
+    </div>
+    <script src="script-certificato.js"></script>
+  </body>
 </html>
