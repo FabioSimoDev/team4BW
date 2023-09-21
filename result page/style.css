@@ -31,8 +31,7 @@ body {
 /* logo EPICODE, >> da aggiungere una classe o un ID. */
 img {
   margin-top: 0.3em;
-  width: 20vh ;
- 
+  width: 20vh;
 }
 
 /* main -- centra il title. */
@@ -153,7 +152,7 @@ a {
 
 /* stile percentuale domande corrette */
 #correctAnswersPercentage {
-  color: #28a745;
+  color: #00ffff;
   text-shadow: 0px 0px 30px black;
 }
 
@@ -196,13 +195,25 @@ a {
   font-weight: bold;
 }
 
+.legend-not-passed-color {
+  color: #bf0086;
+  font-weight: 700;
+}
+
+#not-passed-text {
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
 #congratulations-text {
   font-weight: bold;
   font-family: "Inter", sans-serif;
 }
 
 #congratulations-text,
-.legend-color {
+.legend-color,
+.legend-not-passed-color,
+#not-passed-text {
   font-size: 20px;
 }
 
