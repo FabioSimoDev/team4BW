@@ -13,12 +13,14 @@ const spanWrongAnswersText = document.getElementById("wrongAnswersCount");
 //se ci sono i parametri "correctAnswer", "wrongAnswers" e "questions", allora questi vengono settati
 //altrimenti vengono settati a 0
 correctAnswer = parameters.has("correctAnswer")
-  ? parameters.get("correctAnswer")
+  ? parseFloat(parameters.get("correctAnswer"))
   : 0;
 wrongAnswer = parameters.has("wrongAnswers")
-  ? parameters.get("wrongAnswers")
+  ? parseFloat(parameters.get("wrongAnswers"))
   : 0;
-questionsNumber = parameters.has("question") ? parameters.get("question") : 0;
+questionsNumber = parameters.has("question")
+  ? parseFloat(parameters.get("question"))
+  : 0;
 
 const correctPercentage =
   correctAnswer !== 0 && questionsNumber !== 0
@@ -71,6 +73,7 @@ const updateChart = function (correctAnswers, wrongAnswers) {
 
 //chiamiamo la funzione "updateChart" con i dati iniziali (con l'operatore ternario ci assicuriamo che le percentuali non siano a 0.
 //nel caso lo fossero, setta a 1 le risposte sbagliate e a 0 quelle corrette nel grafico.)
+console.log(correctAnswer, wrongAnswer, questionsNumber);
 updateChart(
   correctAnswer,
   (correctAnswer !== 0 || wrongAnswer !== 0) &&
@@ -91,7 +94,7 @@ spanWrongAnswersText.textContent = wrongAnswer + "/" + questionsNumber;
 //otteniamo l'elemento HTML con id "custom-legend"
 let customLegend = document.getElementById("custom-legend");
 
-if (correctPercentage !== NaN || correctPercentage < 60) {
+if (isNaN(correctPercentage) || correctPercentage < 60) {
   customLegend.innerHTML = `<div class="text-inside-graph">
                               <p>
                                 <span id="not-passed-text">We're Sorry :(</span

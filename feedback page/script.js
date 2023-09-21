@@ -1,5 +1,15 @@
 // codice JavaScript della pagina
 
+// parametri
+const url = window.location; //otteniamo la pagina
+const parameters = new URLSearchParams(url.search); //cerchiamo se ci sono dei parametri
+// se c'è il parametro "passed" lo salva, altrimenti torna undefined nella variabile.
+let passedExam =
+  parameters.has("passed") &&
+  (parameters.get("passed") === "true" || parameters.get("passed") === "false")
+    ? parameters.get("passed")
+    : undefined;
+
 const starDiv = document.getElementById("star");
 const array = [];
 for (i = 0; i < 10; i++) {
@@ -37,14 +47,14 @@ for (i = 0; i < 10; i++) {
     let length = array.indexOf(e.target);
 
     if (e.target.classList.contains("blue")) {
-      //se la stella e blu diventano bianche tutte le precendenti
+      //se la stella è blu diventano bianche tutte le precendenti
       for (j = 0; j <= length; j++) {
         array[j].classList.add("white0");
         array[j].classList.remove("blue0");
       }
     } else {
       for (j = length + 1; j < 10; j++) {
-        //se la stella e bianca colora di blu tutte le successive
+        //se la stella è bianca colora di blu tutte le successive
         array[j].classList.add("blue0");
         array[j].classList.remove("white0");
       }
@@ -62,5 +72,9 @@ for (i = 0; i < 10; i++) {
 
 const changePage = function (event) {
   //funzione per cambiare pagina
-  window.location.href = "../tesseramento/index.html";
+  if (passedExam === "true") {
+    window.location.href = `../tesseramento/index.html?passed=${passedExam}`;
+  } else {
+    window.location.reload();
+  }
 };

@@ -50,6 +50,11 @@ h5,
 
 .title {
   margin-bottom: 4em;
+  transition: all 0.3s ease;
+}
+
+.title:hover {
+  transform: scale(1.05);
 }
 
 h1 {
@@ -57,6 +62,11 @@ h1 {
   font-size: 3.2em;
   font-weight: 800;
   margin: 0.1em 0;
+  transition: all 0.3s ease;
+}
+
+h1:hover {
+  color: rgb(255, 200, 200);
 }
 
 h5 {
@@ -137,6 +147,11 @@ a {
   /* font-weight: bold; */
 }
 
+.left-column:hover #correctAnswersPercentage,
+.right-column:hover #wrongAnswersPercentage {
+  font-size: 120%;
+}
+
 /* stile per la colonna centrale */
 .center-column {
   flex: 2;
@@ -155,12 +170,14 @@ a {
 #correctAnswersPercentage {
   color: #00ffff;
   text-shadow: 0px 0px 30px black;
+  transition: all 0.3s ease;
 }
 
 /* stile percentuale doamnde sbagliate */
 #wrongAnswersPercentage {
   color: #bf0086;
   text-shadow: 0px 0px 10px black;
+  transition: all 0.3s ease;
 }
 
 /* stile per il grafico */
@@ -173,9 +190,14 @@ a {
   border-radius: 50%;
 }
 
+#chart-container:hover {
+  transform: scale(1.05);
+}
+
 /* stile del contenitore del grafico */
 #chart-container {
   position: relative;
+  transition: all 0.3s ease;
 }
 
 /* stile della legenda personalizzata */
