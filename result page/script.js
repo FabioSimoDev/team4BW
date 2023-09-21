@@ -67,12 +67,27 @@ const updateChart = function (correctAnswers, wrongAnswers) {
 updateChart(correctAnswer, wrongAnswer);
 
 correctAnswersText.textContent = correctPercentage + "%";
+correctAnswersText.style.opacity =
+  correctPercentage > 30 ? correctPercentage / 100 : 0.3;
+wrongAnswersText.style.opacity =
+  wrongPercentage > 30 ? wrongPercentage / 100 : 0.3;
 wrongAnswersText.textContent = wrongPercentage + "%";
 spanCorrectText.textContent = correctAnswer + "/" + questionsNumber + " ";
 spanWrongAnswersText.textContent = wrongAnswer + "/" + questionsNumber;
 
 //otteniamo l'elemento HTML con id "custom-legend"
 let customLegend = document.getElementById("custom-legend");
+
+if (correctPercentage < 60) {
+  customLegend.innerHTML = `<div class="text-inside-graph">
+                              <p>
+                                <span id="not-passed-text">We're Sorry :(</span
+                                ><br /><span class="legend-not-passed-color"
+                                  >You didn't pass the exam.</span
+                                ><br /><br />you failed, <br>but you'll be luckier next time.
+                              </p>
+                            </div>`;
+}
 
 // customLegend.innerHTML += `<div><p>Congratulations!<br><span class="legend-color">You passed the exam.</span><br><br>we'll send you a certificate in a few minutes.<br>check your email (including promotions / spam folder</div>`;
 
