@@ -72,7 +72,7 @@ const displayQuestion = function () {
   }
   console.log(currentQue.question.length);
   answer.forEach((element) => {
-    element.style.display = "inline";
+    element.parentElement.style.display = "inline";
   });
   questionContainer.style.color = "white";
   questionContainer.style.fontSize = "40px";
@@ -89,11 +89,34 @@ const displayQuestion = function () {
 
   for (let i = 0; i < answer.length; i++) {
     if (i >= allOptions.length) {
-      answer[i].style.display = "none";
+      answer[i].parentElement.style.display = "none";
     }
     answer[i].textContent = shuffle[i];
     answer[i].addEventListener("click", answerClick); //Abbia o collegato il click del mouse alla funzione
   }
+
+  let length;
+  let buttonsArr = Array.from(answer);
+  console.log(buttonsArr);
+  let previousValue = 0;
+  buttonsArr.forEach((element) => {
+    console.log(previousValue, buttonsArr);
+    console.log("shuffle:", shuffle);
+    console.log("element:", element.textContent.length);
+    if (element.textContent.length > previousValue) {
+      length = element.textContent.length;
+    } else {
+      length = previousValue;
+    }
+    previousValue = element.textContent.length;
+  });
+  buttonsArr.forEach((element) => {
+    const desiredHeight = Math.min(80, Math.max(60, length * 10));
+    const desiredWidth = Math.min(390, Math.max(290, length * 10));
+    element.style.height = desiredHeight + "px";
+    element.style.width = desiredWidth + "px";
+    console.log("sdufisfudh", desiredWidth);
+  });
 };
 
 const timer = function () {
@@ -102,11 +125,15 @@ const timer = function () {
   timerCountdown = setInterval(function () {
     console.log("sono nel timer", countdown);
     countdown = --countdown <= 0 ? 50 : countdown;
+    if (countdown <= 10) {
+      text2.classList.add("timer-anim");
+    }
     if (countdown === 1) {
       setTimeout(() => {
         countdown = 50;
         currentQuestion++;
         displayQuestion();
+        text2.classList.remove("timer-anim");
       }, 1000);
     }
     text2.textContent = countdown;
