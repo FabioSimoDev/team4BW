@@ -42,17 +42,21 @@ const print = function () {
 
   // converte l'elemento HTML selezionato in un documento PDF utilizzando la libreria jsPDF
   docPDF.html(elementHTML, {
+    html2canvas: {
+      width: 900
+    },
+
     // callback che viene eseguita una volta che la conversione è completata
     callback: function (docPDF) {
       // salva il documento PDF generato con il nome "certificato.pdf"
       docPDF.save("certificato.pdf");
     },
     // imposta la posizione orizzontale (x) del contenuto PDF generato, in questo caso a 15 unità
-    x: 15,
+    x: -1,
     // imposta la posizione verticale (y) del contenuto PDF generato, in questo caso a 15 unità
-    y: 15,
+    y: -5,
     // imposta la larghezza del contenuto PDF generato, in questo caso a 170 unità
-    width: 170,
+    width: 210,
     // imposta la larghezza della finestra del browser quando viene generato il PDF, in questo caso a 650 unità
     windowWidth: 1920
   });

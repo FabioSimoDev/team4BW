@@ -3,25 +3,31 @@ const parameters = new URLSearchParams(url.search); //cerchiamo se ci sono dei p
 let correctAnswer;
 let wrongAnswer;
 let questionsNumber;
+let examPassed = false;
 
 const correctAnswersText = document.getElementById("correctAnswersPercentage");
 const wrongAnswersText = document.getElementById("wrongAnswersPercentage");
 const spanCorrectText = document.getElementById("correctAnswersCount");
 const spanWrongAnswersText = document.getElementById("wrongAnswersCount");
 
-//se c'è il parametro "correctAnswer" e "wrongAnswers"
-if (
-  parameters.has("correctAnswer") &&
-  parameters.has("wrongAnswers") &&
-  parameters.has("question")
-) {
-  correctAnswer = parameters.get("correctAnswer");
-  wrongAnswer = parameters.get("wrongAnswers");
-  questionsNumber = parameters.get("question");
-}
+//se ci sono i parametri "correctAnswer", "wrongAnswers" e "questions", allora questi vengono settati
+//altrimenti vengono settati a 0
+correctAnswer = parameters.has("correctAnswer")
+  ? parameters.get("correctAnswer")
+  : 0;
+wrongAnswer = parameters.has("wrongAnswers")
+  ? parameters.get("wrongAnswers")
+  : 0;
+questionsNumber = parameters.has("question") ? parameters.get("question") : 0;
 
-const correctPercentage = (correctAnswer * 100) / questionsNumber;
-const wrongPercentage = (wrongAnswer * 100) / questionsNumber;
+const correctPercentage =
+  correctAnswer !== 0 && questionsNumber !== 0
+    ? (correctAnswer * 100) / questionsNumber
+    : 0;
+const wrongPercentage =
+  wrongAnswer !== 0 && questionsNumber !== 0
+    ? (wrongAnswer * 100) / questionsNumber
+    : 0;
 
 //definiamo un oggetto "data" che contiene i dati per il grafico a ciambella
 const data = {
@@ -63,8 +69,15 @@ const updateChart = function (correctAnswers, wrongAnswers) {
   donutChart.update(); //aggiorniamo il grafico con i nuovi dati
 };
 
-//chiamiamo la funzione "updateChart" con i dati iniziali
-updateChart(correctAnswer, wrongAnswer);
+//chiamiamo la funzione "updateChart" con i dati iniziali (con l'operatore ternario ci assicuriamo che le percentuali non siano a 0.
+//nel caso lo fossero, setta a 1 le risposte sbagliate e a 0 quelle corrette nel grafico.)
+updateChart(
+  correctAnswer,
+  (correctAnswer !== 0 || wrongAnswer !== 0) &&
+    correctAnswer + wrongAnswer === questionsNumber
+    ? wrongAnswer
+    : 1
+);
 
 correctAnswersText.textContent = correctPercentage + "%";
 correctAnswersText.style.opacity =
@@ -78,7 +91,7 @@ spanWrongAnswersText.textContent = wrongAnswer + "/" + questionsNumber;
 //otteniamo l'elemento HTML con id "custom-legend"
 let customLegend = document.getElementById("custom-legend");
 
-if (correctPercentage < 60) {
+if (correctPercentage !== NaN || correctPercentage < 60) {
   customLegend.innerHTML = `<div class="text-inside-graph">
                               <p>
                                 <span id="not-passed-text">We're Sorry :(</span
@@ -87,6 +100,8 @@ if (correctPercentage < 60) {
                                 ><br /><br />you failed, <br>but you'll be luckier next time.
                               </p>
                             </div>`;
+} else {
+  examPassed = true;
 }
 
 // customLegend.innerHTML += `<div><p>Congratulations!<br><span class="legend-color">You passed the exam.</span><br><br>we'll send you a certificate in a few minutes.<br>check your email (including promotions / spam folder</div>`;
@@ -94,3 +109,14 @@ if (correctPercentage < 60) {
 //impostiamo la larghezza dell'elemento "customLegend" basandoci sulla larghezza del grafico
 customLegend.style.width = `${donutChart.width - 140}px`;
 // customLegend.style.height = `${donutChart.height - 120}px`;
+
+//per cambiare pagina. passa come query parameters se l'utente è stato promosso o bocciato (serve per il certificato.)
+const changePage = function () {
+  if (examPassed) {
+    const url = `../feedback page/index.html?passed=true`;
+    window.location.href = url;
+  } else {
+    const url = `../feedback page/index.html?passed=false`;
+    window.location.href = url;
+  }
+};
