@@ -26,6 +26,8 @@ text3.textContent = "REMAINING";
 text3.classList.add("textSpan2");
 countdownNumberEl.appendChild(text3);
 
+let alreadyClicked = false;
+
 let currentQuestion = 0;
 let score = 0;
 //Qui cerco la posizione dei vari elementi dell'HTML
@@ -459,6 +461,11 @@ const startQuiz = function () {
 
 //Ci permette di passare alla domana successiva al click del mouse
 const answerClick = function (event) {
+  if (alreadyClicked) {
+    return; //se il bottone era già cliccato, ritorna la funzione.
+  } else {
+    alreadyClicked = true; //se il bottone non era cliccato, cliccalo
+  }
   const circle = document.querySelector("svg circle");
   const selectedAnswer = event.target.textContent;
   switch (difficulty.toLowerCase()) {
@@ -483,11 +490,12 @@ const answerClick = function (event) {
   currentQuestion++;
 
   if (correctNone) {
-    event.target.style.animation = "correct 2s linear 1";
+    event.target.style.animation = "correct 1.5s linear 1";
     event.target.id = "correct-border";
     event.target.classList.remove("hover");
     setTimeout(() => {
       displayQuestion();
+      alreadyClicked = false; //quando mostri la nuova domanda, rendi il bottone non cliccato cosi da poter cliccare gli altri.
       circle.classList.remove("animation");
       countdown = 50;
       text2.textContent = countdown;
@@ -501,13 +509,14 @@ const answerClick = function (event) {
       event.target.removeAttribute("id");
       event.target.classList.add("hover");
       event.target.style.animation = "none";
-    }, 2000);
+    }, 1600);
   } else {
     answer.forEach((element) => {
       if (element.textContent === correctAnswer) {
-        element.style.animation = "correct 2s linear 1";
+        element.style.animation = "correct 1.5s linear 1";
         setTimeout(() => {
           displayQuestion();
+          alreadyClicked = false; //quando mostri la nuova domanda, rendi il bottone non cliccato cosi da poter cliccare gli altri.
           circle.classList.remove("animation");
           countdown = 50;
           text2.textContent = countdown;
@@ -519,7 +528,7 @@ const answerClick = function (event) {
           stopTimer();
           timer();
           element.style.animation = "none";
-        }, 2000);
+        }, 1600);
       }
     });
   }
