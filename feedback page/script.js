@@ -59,3 +59,8 @@ for (i = 0; i < 10; i++) {
     }
   });
 }
+
+const changePage = function (event) {
+  //funzione per cambiare pagina
+  window.location.href = "../tesseramento/index.html";
+};
