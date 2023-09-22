@@ -10,60 +10,62 @@ let passedExam =
     ? parameters.get("passed")
     : undefined;
 
-const starDiv = document.getElementById("star");
-const array = [];
-for (i = 0; i < 10; i++) {
-  //ciclo per creare le 10 stelle aggiungerle all'array di stelle e appenderle al div star
-  const stars = document.createElement("i");
-  stars.classList.add("fas");
-  stars.classList.add("fa-star");
-  stars.classList.add("blue");
-  stars.classList.add(`${i + 1}`);
+const starDiv = document.getElementById("star"); //div contenente le stelle
+const array = []; //array contenente le stelle
 
-  array.push(stars);
-  starDiv.appendChild(array[i]);
+//ciclo per creare le stelle
+for (let i = 0; i < 10; i++) {
+  const stars = document.createElement("i"); //creiamo una stella
+  stars.classList.add("fas"); //aggiungiamo la classe fas alla stella appena creata
+  stars.classList.add("fa-star"); //aggiungiamo la classe fa-star alla stella
+  stars.classList.add("blue"); //aggiugniamo la classe blue alla stella
+  stars.classList.add(`${i + 1}`); //aggiungiamo la classe i+1 alla stella, in modo da poterle "identificare" separatamente
+
+  array.push(stars); //aggiungiamo la stella all'array di stelle
+  starDiv.appendChild(array[i]); //aggiungiamo la stella alla pagina
+
+  //se la stella è cliccata
   stars.addEventListener("click", (e) => {
-    //aggiunto l'event listener su ciascuna stella
-    let length = array.indexOf(e.target); //ricavo l'indice della stella premuta
-
+    //troviamo la posizione della stella cliccata
+    let length = array.indexOf(e.target);
+    //se la stella cliccata è già blu, la rimuoviamo
+    //altrimenti la aggiungiamo
     if (e.target.classList.contains("blue")) {
-      // creo un if per capire se la stella e' blu o azzurra
-      for (j = 0; j <= length; j++) {
-        // se e' blu rimuovo la classe blu e aggiungo quella azzurra atutte le precedenti
+      for (let j = 0; j <= length; j++) {
         array[j].classList.add("white");
         array[j].classList.remove("blue");
       }
     } else {
-      for (j = length + 1; j < 10; j++) {
-        //se e' azzurra rimuovo la classe azzurra e aggiungo quella blu a tutte le seguenti
+      for (let j = length + 1; j < 10; j++) {
         array[j].classList.add("blue");
         array[j].classList.remove("white");
       }
     }
   });
 
+  //se il mouse passa sopra la stella
   stars.addEventListener("mouseover", (e) => {
-    //aggiungo il colore sull over del mouse
+    //troviamo la posizione della stella
     let length = array.indexOf(e.target);
 
+    //stesso codice di sopra.
     if (e.target.classList.contains("blue")) {
-      //se la stella è blu diventano bianche tutte le precendenti
-      for (j = 0; j <= length; j++) {
+      for (let j = 0; j <= length; j++) {
         array[j].classList.add("white0");
         array[j].classList.remove("blue0");
       }
     } else {
-      for (j = length + 1; j < 10; j++) {
-        //se la stella è bianca colora di blu tutte le successive
+      for (let j = length + 1; j < 10; j++) {
         array[j].classList.add("blue0");
         array[j].classList.remove("white0");
       }
     }
   });
+
   stars.addEventListener("mouseleave", () => {
-    // appena tolgo il mouse rimuovo tutto quello che ho aggiunto con l'over e lascio
-    //solo quello che ho cliccato
-    for (j = 0; j < 10; j++) {
+    //se il mouse lascia la stella
+    //rimuoviamo la classe blue0 e white0 dalle stelle
+    for (let j = 0; j < 10; j++) {
       array[j].classList.remove("white0");
       array[j].classList.remove("blue0");
     }
