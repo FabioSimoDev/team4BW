@@ -469,7 +469,7 @@ const answerClick = function (event) {
   } else {
     alreadyClicked = true; //se il bottone non era cliccato, cliccalo
   }
-  const circle = document.querySelector("svg circle");
+  const circle = document.querySelector("svg circle:nth-child(2)");
   const selectedAnswer = event.target.textContent;
   switch (difficulty.toLowerCase()) {
     case "easy":
