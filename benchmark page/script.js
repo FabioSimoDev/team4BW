@@ -1,4 +1,6 @@
 // codice JavaScript della pagina
+const ANIMATION_THRESHOLD = 10;
+const TIMER_INTERVAL = 1000;
 
 const url = window.location;
 console.log(url);
@@ -10,7 +12,7 @@ if (parameters.has("difficulty")) {
   console.log("trovato");
 }
 
-//Funzione per il timer
+// funzione per il timer
 let countdownNumberEl = document.querySelector(".timer-text");
 let countdown = 50;
 let timerCountdown;
@@ -30,7 +32,7 @@ let alreadyClicked = false;
 
 let currentQuestion = 0;
 let score = 0;
-//Qui cerco la posizione dei vari elementi dell'HTML
+// qui cerco la posizione dei vari elementi dell'HTML
 const pageNumber = document.querySelector(".page-number");
 const questionContainer = document.querySelector(".question");
 const answer = document.querySelectorAll("#buttons button");
@@ -40,7 +42,7 @@ const changePage = function () {
     currentQuestion - score
   }&question=${currentQuestion}`;
 };
-//Questa funzione permette alla parte delle domande di cambiare al click della risposta
+// questa funzione permette alla parte delle domande di cambiare al click della risposta
 const displayQuestion = function () {
   console.log(difficulty);
   if (currentQuestion === questionsEasy.length) {
@@ -127,7 +129,7 @@ const timer = function () {
   timerCountdown = setInterval(function () {
     console.log("sono nel timer", countdown);
     countdown = --countdown <= 0 ? 50 : countdown;
-    if (countdown <= 10) {
+    if (countdown <= ANIMATION_THRESHOLD) {
       text2.classList.add("timer-anim");
     }
     if (countdown === 1) {
@@ -139,12 +141,13 @@ const timer = function () {
       }, 1000);
     }
     text2.textContent = countdown;
-  }, 1000);
+  }, TIMER_INTERVAL);
 };
-//Funzione per far refreshare il timer al click del mouse sulla risposta per poi ripartire alla nuova domanda
+// funzione per far refreshare il timer al click del mouse sulla risposta per poi ripartire alla nuova domanda
 const stopTimer = function () {
   clearInterval(timerCountdown);
   timerCountdown = null;
+  text2.classList.remove("timer-anim");
 };
 //Variabili delle domanda in base a tre livelli di difficoltà:
 //Domande facili
@@ -481,7 +484,7 @@ const answerClick = function (event) {
   }
 
   let correctNone = false;
-  //Qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
+  //qui assegniamo il punteggio per lo score finale che poi sarà collegato alla page results
   if (selectedAnswer === correctAnswer) {
     score += 1;
     correctNone = true;
@@ -499,7 +502,7 @@ const answerClick = function (event) {
       circle.classList.remove("animation");
       countdown = 50;
       text2.textContent = countdown;
-      //Così applichiamo il refresh del mouse al click
+      //così applichiamo il refresh del mouse al click
       setTimeout(() => {
         circle.classList.add("animation");
       }, 10);
@@ -520,7 +523,7 @@ const answerClick = function (event) {
           circle.classList.remove("animation");
           countdown = 50;
           text2.textContent = countdown;
-          //Così applichiamo il refresh del mouse al click
+          //così applichiamo il refresh del mouse al click
           setTimeout(() => {
             circle.classList.add("animation");
           }, 10);
@@ -532,7 +535,7 @@ const answerClick = function (event) {
       }
     });
   }
-  //Tramite questa funzione permettiamo di ciclare l'array di domande
+  // tramite questa funzione permettiamo di ciclare l'array di domande
 
   if (currentQuestion === questionsEasy.length) {
     alert("Hai completato il quiz! Punteggio: " + score);
@@ -542,7 +545,7 @@ const answerClick = function (event) {
 const shuffleArray = function (array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Scambia gli elementi casualmente
+    [array[i], array[j]] = [array[j], array[i]]; // scambia gli elementi casualmente
   }
   return array;
 };
