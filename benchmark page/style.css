@@ -178,7 +178,7 @@ button::before {
 svg .animation {
   stroke-dasharray: 286px;
   stroke-dashoffset: 0px;
-  animation: countdown 50s linear infinite forwards;
+  animation: countdown 30s linear infinite forwards;
 }
 @keyframes countdown {
   from {

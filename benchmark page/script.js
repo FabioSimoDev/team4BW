@@ -1,6 +1,7 @@
 // codice JavaScript della pagina
 const ANIMATION_THRESHOLD = 10;
 const TIMER_INTERVAL = 1000;
+const ANSWER_TIME = 30;
 
 const url = window.location;
 console.log(url);
@@ -14,7 +15,7 @@ if (parameters.has("difficulty")) {
 
 // funzione per il timer
 let countdownNumberEl = document.querySelector(".timer-text");
-let countdown = 50;
+let countdown = ANSWER_TIME;
 let timerCountdown;
 const text1 = document.createElement("span");
 text1.textContent = "SECONDS";
@@ -124,17 +125,17 @@ const displayQuestion = function () {
 };
 
 const timer = function () {
-  countdown = 50;
+  countdown = ANSWER_TIME;
   text2.textContent = countdown;
   timerCountdown = setInterval(function () {
     console.log("sono nel timer", countdown);
-    countdown = --countdown <= 0 ? 50 : countdown;
+    countdown = --countdown <= 0 ? ANSWER_TIME : countdown;
     if (countdown <= ANIMATION_THRESHOLD) {
       text2.classList.add("timer-anim");
     }
     if (countdown === 1) {
       setTimeout(() => {
-        countdown = 50;
+        countdown = ANSWER_TIME;
         currentQuestion++;
         displayQuestion();
         text2.classList.remove("timer-anim");
@@ -500,7 +501,7 @@ const answerClick = function (event) {
       displayQuestion();
       alreadyClicked = false; //quando mostri la nuova domanda, rendi il bottone non cliccato cosi da poter cliccare gli altri.
       circle.classList.remove("animation");
-      countdown = 50;
+      countdown = ANSWER_TIME;
       text2.textContent = countdown;
       //così applichiamo il refresh del mouse al click
       setTimeout(() => {
@@ -521,7 +522,7 @@ const answerClick = function (event) {
           displayQuestion();
           alreadyClicked = false; //quando mostri la nuova domanda, rendi il bottone non cliccato cosi da poter cliccare gli altri.
           circle.classList.remove("animation");
-          countdown = 50;
+          countdown = ANSWER_TIME;
           text2.textContent = countdown;
           //così applichiamo il refresh del mouse al click
           setTimeout(() => {
